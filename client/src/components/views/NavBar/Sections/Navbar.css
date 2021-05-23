@@ -1,0 +1,203 @@
+@import '~antd/dist/antd.css';
+
+:root{
+  --black-color: #222f3e;
+}
+
+.menu {
+  padding: 0 20px;
+  border-bottom: solid 1px #222f3e;
+  overflow: auto;
+  box-shadow: 0 0 0px rgb(153, 21, 21);
+  background-color: #222f3e;
+  width: 100vw !important;
+  height: 68px !important;
+}
+
+.menu__logo {
+  width: 150px;
+  float: left;
+}
+
+.menu__logo a {
+  display: inline-block;
+  font-size: 20px;
+  padding: 19px 20px;
+}
+
+.menu__container .ant-menu-item {
+  padding: 0px 5px;
+}
+
+.menu__container .ant-menu-submenu-title {
+  padding: 10px 20px;
+}
+
+.menu__container .ant-menu-item a,
+.menu__container .ant-menu-submenu-title a {
+  padding: 10px 15px;
+}
+
+.menu__container .ant-menu-horizontal {
+  border-bottom: none;
+}
+
+.menu__container .menu_left {
+  float: left;
+}
+
+.menu__container .menu_rigth {
+  float: right;
+}
+
+.menu__mobile-button {
+  float: right;
+  height: 40px;
+  width: 40px;
+  padding: 6px;
+  margin-top: 12px;
+  font-size: 24px;
+  display: none !important; /* use of important to overwrite ant-btn */
+}
+
+.burger-icon{
+  position: relative;
+  top: -11px;
+}
+
+.menu_drawer .ant-drawer-body {
+  padding: 0 !important;
+}
+
+/* align header of Drawer with header of page */
+.menu_drawer .ant-drawer-header {
+  padding: 14px 24px !important;
+}
+
+#route-link{
+  text-decoration: none;
+}
+
+.ant-drawer-header {
+  background-color: var(--black-color);
+  border-radius: 0;
+}
+
+.ant-menu-item, .ant-menu-submenu, .ant-menu-item-group{
+  background-color: var(--black-color);
+}
+
+.ant-menu-item-group-title{
+  color: #c8d6e5;
+  font-weight: bold;
+}
+
+.ant-menu-item{
+  color: #c8d6e5;
+}
+
+.menu__container .ant-menu-item a{
+  color: #c8d6e5;
+}
+
+.ant-menu-submenu{
+  color: #c8d6e5;
+}
+
+.ant-menu-submenu a{
+  color: #c8d6e5;
+}
+
+
+.menu__logo a {
+  color: #c8d6e5;
+}
+
+.menu__logo a:hover {
+  background-color: #576574;
+  color: #01a3a4;
+}
+
+.ant-menu-submenu-title:hover{
+  background-color: #576574;
+  color: #01a3a4;
+}
+
+.ant-menu-item:hover{
+  color: #01a3a4;
+  background-color: #576574;
+}
+
+.menu__container:hover{
+  color: #01a3a4;
+  background-color: #576574;
+}
+
+.ant-menu-submenu a:hover{
+  color: #01a3a4;
+}
+
+.menu__container .ant-menu-item a:hover{
+  color: #01a3a4;
+}
+
+.menu__container .ant-menu-item:hover{
+  background-color: #576574;
+}
+
+.menu_left, .menu_rigth{
+  background-color: #01a3a4;
+}
+
+.menu__mobile-button {
+  background: var(--black-color);
+  border-color: var(--black-color);
+}
+
+.ant-drawer-title{
+  color: #c8d6e5;
+}
+
+.menu__mobile-button:hover{
+  border-color: #01a3a4;
+}
+
+.menu__mobile-button:hover{
+  background: #01a3a4;
+}
+
+.ant-drawer-wrapper-body{
+  background-color: #222f3e;
+}
+
+.ant-menu{
+  background-color: #222f3e;
+}
+
+.ant-menu .ant-menu-sub::after .ant-menu-inline{
+  background-color: #222f3e !important; 
+}
+
+#route-link{
+  color: #c8d6e5;
+}
+
+#route-link:hover{
+  color: #01a3a4;
+}
+
+@media (max-width: 767px) {
+  .menu__mobile-button {
+    display: inline-block !important;
+    overflow: hidden;
+  }
+
+  .menu_left,
+  .menu_rigth {
+    display: none;
+  }
+  .menu__logo a {
+    padding: 10px 20px;
+    padding-top: 20px !important;
+  }
+}

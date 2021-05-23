@@ -1,0 +1,53 @@
+.div-backgroundBox{
+    position: absolute;
+    width: 65vw;
+    height: 40vh;
+    min-height: 450px;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.div-backgroundBox2{
+    position: absolute;
+    width: 65vw;
+    height: 40vh;
+    min-height: 450px;
+    min-width: 400px;
+    max-width: 600px;
+    background-color: rgba(34, 47, 62, 0.9);
+    top: 0;
+    left: 0;
+    z-index: 0.1;
+    border-radius: 10px;
+    border: 2px solid #40A9FF;
+    -webkit-box-shadow: 8px 12px 32px 5px #000000; 
+    box-shadow: 8px 12px 32px 5px #000000;
+}
+
+.div-main{
+    width: 100%;
+}
+
+.title-loginPage{
+    z-index: 1;
+    color: #c8d6e5 !important;
+}
+
+
+.form-loginPage{
+    width: 350px;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 570px) {
+    
+    .div-backgroundBox{
+        min-height: 500px;
+        min-width: 100%;
+    }
+    .div-backgroundBox2{
+        min-height: 500px;
+        min-width: 100%;
+    }
+
+}

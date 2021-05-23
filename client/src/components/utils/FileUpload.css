@@ -1,0 +1,46 @@
+.div-main{
+    display:flex;
+    margin-bottom: 15px;
+}
+
+.div-dropzone{
+    width: 30vw;
+    max-width: 400px;
+    height: 258px;
+    border: 8px solid rgb(2, 107, 121);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(21, 21, 53, 0.342);
+    margin-right: 10px;
+}
+
+.icon{
+    font-size: 3rem;
+}
+
+.div-displayImage{
+    display: flex;
+    width: 30vw;
+    height: 258px;
+    overflow: scroll;
+    overflow-y: hidden;
+    border: 8px solid rgb(2, 107, 121);
+    border-radius: 10px;
+    background-color: rgba(21, 21, 53, 0.342);
+}
+
+.img-images{
+    width: 320px;
+    height: 240px;
+}
+
+.label-fileUpload{
+    margin: auto;
+}
+
+.div-fileUpload-displayPicture{
+    display: flex;
+    flex-direction: column;
+}

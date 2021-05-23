@@ -1,0 +1,49 @@
+{
+  "name": "react-boiler-plate",
+  "version": "1.0.0",
+  "description": "react boiler plate",
+  "main": "index.js",
+  "engine": {
+    "node": "10.16.0",
+    "npm": "6.9.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "backend": "nodemon server/index.js",
+    "frontend": "npm run front --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+  },
+  "author": "Hannes Röd",
+  "license": "ISC",
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@pathofdev/react-tag-input": "^1.0.7",
+    "async": "^3.2.0",
+    "bcrypt": "^3.0.8",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.6.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.9",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "react-collapsible": "^2.8.3",
+    "react-dnd": "^5.0.0",
+    "react-dnd-html5-backend": "^3.0.2",
+    "react-draggable-tags": "^1.0.2",
+    "react-image-gallery": "^1.0.9",
+    "react-native": "^0.64.1",
+    "react-redux": "^5.1.2",
+    "react-tag-input": "^6.5.2",
+    "react-toastify": "^7.0.4",
+    "reactstrap": "^8.9.0",
+    "socket.io": "^2.4.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.19.4"
+  }
+}

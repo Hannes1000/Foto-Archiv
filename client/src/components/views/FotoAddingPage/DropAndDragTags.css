@@ -1,0 +1,119 @@
+/* Example Styles for React Tags*/
+
+div.ReactTags__tags {
+    position: relative;
+}
+
+/* Styles for the input */
+div.ReactTags__tagInput {
+    width: 200px;
+    border-radius: 10px;
+    display: inline-block;
+}
+div.ReactTags__tagInput input.ReactTags__tagInputField,
+div.ReactTags__tagInput input.ReactTags__tagInputField:focus {
+    height: 30px;
+    margin: 0;
+    font-size: 13px;
+    width: 100%;
+    border-top:    0px solid  #026B79;
+    border-right:  0px solid #026B79;
+    border-left:   0px solid  #026B79;
+    border-bottom: 0px solid  #026B79;
+    padding: 0 10px;
+    border-radius: 3px 3px 3px 3px;
+    margin-top: 20px;
+}
+
+input.ReactTags__tagInputField:focus{
+    outline-color: #40A9FF;
+    outline-width: 1px;
+    border-bottom:   0px solid transparent;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.ReactTags__remove{
+    padding:20px auto;
+    text-align: center;  
+    line-height: 20px;
+    margin-left: 5px;
+    font-weight: bold;
+    border-radius: 50%;
+    outline: none;
+    border: 1px solid black;
+    box-shadow:0 1px 2px #5e5d5b;
+}
+
+/* Styles for selected tags */
+div.ReactTags__selected span.ReactTags__tag {
+    border: 5px solid #026B79;
+    background: rgba(21, 21, 53, 0.342);
+    font-size: 12px;
+    display: inline-block;
+    padding: 0px 5px;
+    margin: 0 5px;
+    cursor: move;
+    border-radius: 10px;
+    font-weight: bold;
+    padding-right: 10px;
+    margin-bottom: 5px;
+}
+
+span.ReactTags__tag{
+    overflow: hidden;
+}
+div.ReactTags__selected a.ReactTags__remove {
+    color: rgb(182, 33, 33);
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Styles for suggestions */
+div.ReactTags__suggestions {
+    position: absolute;
+    z-index: 100;
+}
+div.ReactTags__suggestions ul {
+    list-style-type: none;
+    width: 240px;
+    background: transparent;
+}
+
+div.ReactTags__suggestions li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom:   2px solid  #40A9FF;
+}
+
+div.ReactTags__suggestions li:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top:   2px solid  #40A9FF;
+}
+
+div.ReactTags__suggestions li {
+    font-family:Arial, Helvetica, sans-serif;
+    letter-spacing: 0px !important;
+    border-right:  2px solid #40A9FF;
+    border-left:   2px solid  #40A9FF;
+    position: relative;
+    left: -40px;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    background:white;
+}
+
+
+div.ReactTags__suggestions li mark {
+    text-decoration: underline;
+    background: none;
+    font-weight: 600;
+}
+div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
+    background: #b7cfe0;
+    cursor: pointer;
+}
+
+div.ReactTags__selected{
+    max-width: 60vw;
+}

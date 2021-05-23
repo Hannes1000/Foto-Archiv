@@ -1,0 +1,49 @@
+#body-background{
+    padding-top: 68px;
+    min-height: calc(100vh);
+    z-index: -1;
+    width: 100vw;
+
+
+    
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("./ressources/background.png");
+    background-attachment: fixed;
+	background-size:cover;
+}
+
+:root{
+    /* CSS HEX */
+    --skobeloff: #006466ff;
+    --midnight-green-eagle-green: #065a60ff;
+    --midnight-green-eagle-green-2: #0b525bff;
+    --midnight-green-eagle-green-3: #144552ff;
+    --charcoal: #1b3a4bff;
+    --prussian-blue: #212f45ff;
+    --space-cadet: #272640ff;
+    --dark-purple: #312244ff;
+    --russian-violet: #3e1f47ff;
+    --russian-violet-2: #4d194dff;
+    overflow-x: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--charcoal);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #026B79;
+}
