@@ -15,19 +15,20 @@ function LeftMenu(props) {
       </Menu.Item>
       <SubMenu title={<span>Admin</span>}>
         <MenuItemGroup title="Fotografien Verwalten:">
-      <Menu.Item key="addFoto" >
-        <a id="route-link" href="/fotos/add">Hinzufügen</a>
-      </Menu.Item>
-      <Menu.Item key="viewFoto" >
-        <a id="route-link" href="/fotos/view">Anschauen</a>
-      </Menu.Item>
-      <Menu.Item key="test">
-        <a id="route-link" href="/test">Test</a>
-      </Menu.Item>
+          <Menu.Item key="addFoto" >
+            <a id="route-link" href="/fotos/add">Hinzufügen</a>
+          </Menu.Item>
+          <Menu.Item key="viewFoto" >
+            <a id="route-link" href="/fotos/view">Anschauen</a>
+          </Menu.Item>
+          <Menu.Item key="test">
+            <a id="route-link" href="/test">Test</a>
+          </Menu.Item>
         </MenuItemGroup>
-        <MenuItemGroup title="Item 2">
-          <Menu.Item key="setting:3">Option 3</Menu.Item>
-          <Menu.Item key="setting:4">Option 4</Menu.Item>
+        <MenuItemGroup title="Benutzer Verwalten">
+          <Menu.Item key="editUsers" >
+            <a id="route-link" href="/users/edit">Rechtevergabe</a>
+          </Menu.Item>
         </MenuItemGroup>
       </SubMenu>
     </Menu>

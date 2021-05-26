@@ -3,7 +3,6 @@ import Dropzone from "react-dropzone"
 import { Icon } from "antd"
 import "./FileUpload.css"
 import Axios from "axios"
-import { PromiseProvider } from 'mongoose'
 
 
 function FileUpload(props) {

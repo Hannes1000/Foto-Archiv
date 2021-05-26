@@ -10,10 +10,10 @@ import CompassOutlined from '@ant-design/icons/CompassOutlined';
 import PlusOutlined from '@ant-design/icons/PlusOutlined';
 import { WithContext as ReactTags } from 'react-tag-input';
 import Axios from 'axios';
-import moment from 'moment';
+import moment from "moment";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import "./FotoAddingPage.css"
+import "./FotoEditingPage.css"
 import "./DropAndDragTags.css"
 
 const { Title } = Typography;
@@ -26,25 +26,15 @@ function FotoAddingPage(props) {
     const [creationDateValue, setCreationDateValue] = useState(moment());
     const [authorValue, setAuthorValue] = useState("");
     const [copyrightSourceValue, setCopyrightSourceValue] = useState("");
+    const [titleValue, settitleValue] = useState("");
+    const [descriptionValue, setdescriptionValue] = useState("");
+    const [locationValue, setlocationValue] = useState("");
+    const [cityValue, setcityValue] = useState("");
+    const [countryValue, setcountryValue] = useState("");
     const [copyrightSourceIsAuthor, setCopyrightSourceIsAuthor] = useState(false);
     const [newTagValue, setNewTagValue] = useState("");
-    const [tags, setTags] = useState([
-    ]);
-    const [suggestions, setSuggestions] = useState([
-        {
-            id: "0",
-            text: "Bauernhof"
-        },
-        {
-            id: "1",
-            text: "Kirche"
-        },
-        {
-            id: "2",
-            text: "Gasthof"
-        }
-    ]);
-
+    const [tags, setTags] = useState([]);
+    const [suggestions, setSuggestions] = useState([]);
 
     const KeyCodes = {
         comma: 188,
@@ -102,6 +92,26 @@ function FotoAddingPage(props) {
             setAuthorValue(copyrightSourceValue);
         }
         setCopyrightSourceValue(event.target.value);
+    }
+
+    function handleChangeTitle(event){
+        settitleValue(event.target.value);
+    }
+
+    function handleChangeDescription(event){
+        setdescriptionValue(event.target.value);
+    }
+
+    function handleChangeCity(event){
+        setcityValue(event.target.value);
+    }
+
+    function handleChangeCountry(event){
+        setcountryValue(event.target.value);
+    }
+
+    function handleChangeLocation(event){
+        setlocationValue(event.target.value);
     }
 
     function handleDeleteTags(i) {
@@ -167,44 +177,38 @@ function FotoAddingPage(props) {
     }
 
     useEffect(() => {
-        Axios.post("/api/fotos/allTags")
-            .then(response => {
-                if (response.data.success) {
-                    //alert("nice!");
-                    //console.log(response.data.tags);
-                    var arrTags = []
-                    for (let i = 0; i < response.data.tags.length; i++) {
-                        arrTags.push({ id: response.data.tags[i]._id + "", text: response.data.tags[i].name });
-                        //console.log(response.data.tags[i]._id.toString() + "  " + response.data.tags[i].name )
-                    }
-                    setSuggestions(arrTags);
-                } else {
-                    //alert("Zugriff auf Foto-Datenbank fehlgeschlagen!")
-                    notifyError("Kategorien konnten nicht geladen werden!");
-                    notifyError("Fehler: " + response.data.error.code);
-                }
-            })
+        const dataToSubmit = {
+            _id: props.match.params.id
+        }
+        Axios.post("/api/fotos/getFotoById", dataToSubmit)
+        .then(response => {
+            if (response.data.success) {
+                const fotoData = response.data.fotoData[0];
+                //console.log(fotoData)
+                console.log(fotoData.originalImage);
+                console.log(fotoData.compressedImage);
+                setOriginalImage(fotoData.originalImage);
+                setCompressedImage(fotoData.compressedImage);
+                setMainTagValue(fotoData.mainTag);
+                setImageMaterialValue(fotoData.imageMaterial);
+                setCreationDateValue(moment(fotoData.creationDate, 'YYYY-MM-DD'));
+                setAuthorValue(fotoData.author);
+                setCopyrightSourceValue(fotoData.copyrightSource);
+                settitleValue(fotoData.title);
+                setdescriptionValue(fotoData.description);
+                setcityValue(fotoData.city);
+                setcountryValue(fotoData.country);
+                setlocationValue(fotoData.gpsLocation);
+            } else {
+                //alert("Zugriff auf Foto-Datenbank fehlgeschlagen!")
+                notifyError("Daten konnten nicht geladen werden!");
+                notifyError("Fehler: " + response.data.error.code);
+            }
+        })
     }, []);
 
     return (
         <Formik
-            initialValues={{
-                title: '',
-                description: '',
-                gpsLocation: '',
-                city: '',
-                country: ''
-            }}
-            validationSchema={Yup.object().shape({
-                title: Yup.string()
-                    .required('Titel muss vorhanden sein'),
-                gpsLocation: Yup.string()
-                    .required('GPS-Location muss vorhanden sein'),
-                // author: Yup.string()
-                //     .required('Besitzer der Fotografie muss angegeben werden'),
-                // copyrightSource: Yup.string()
-                //     .required('Urheber der Fotografie muss angegeben werden')
-            })}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                     /*let dataToSubmit = {
@@ -220,16 +224,16 @@ function FotoAddingPage(props) {
                     console.log("User         " + props.user.userData._id)
                     console.log("Author       " + authorValue)
                     console.log("copyright    " + copyrightSourceValue)
-                    console.log("title        " + values.title)
+                    console.log("title        " + titleValue)
                     console.log("maitag       " + mainTagValue)
                     console.log("creationdate " + creationDateValue)
                     //console.log("uploadedDAte " + `${year}${"-"}${month < 10 ? `0${month}` : `${month}`}${"-"}${date}`);
-                    console.log("description  " + values.description)
+                    console.log("description  " + descriptionValue)
                     console.log("originalimag " + originalImage[0])
                     console.log("compressedim " + compressedImage[0])
-                    console.log("gps          " + values.gpsLocation)
-                    console.log("city         " + values.city)
-                    console.log("country      " + values.country)
+                    console.log("gps          " + locationValue)
+                    console.log("city         " + cityValue)
+                    console.log("country      " + countryValue)
                     console.log("imageMat     " + imageMaterialValue)
                     console.log("tags         " + tags)
                     //console.log("suggestion   " + suggestions)
@@ -241,18 +245,18 @@ function FotoAddingPage(props) {
                         copyrightSource: copyrightSourceValue,
                         author: authorValue,
                         mainTag: mainTagValue,
-                        description: values.description,
+                        description: descriptionValue,
                         uploadDate: `${year}${"-"}${month < 10 ? `0${month}` : `${month}`}${"-"}${date}`,
                         creationDate: creationDateValue,
-                        title: values.title,
-                        gpsLocation: values.gpsLocation,
-                        country: values.country,
-                        city: values.city,
+                        title: titleValue,
+                        gpsLocation: locationValue,
+                        country: countryValue,
+                        city: cityValue,
                         imageMaterial: imageMaterialValue,
                         tags: tags
                     }
 
-                    Axios.post("/api/fotos/uploadFoto", dataToSubmit)
+                    Axios.post("/api/fotos/", dataToSubmit)
                         .then(response => {
                             if (response.data.success === true) {
                                 notify("Fotografie hinzugefügt!");
@@ -378,8 +382,8 @@ function FotoAddingPage(props) {
                                     prefix={<EditOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Titel der Fotografie"
                                     type="text"
-                                    value={values.title}
-                                    onChange={handleChange}
+                                    value={titleValue}
+                                    onChange={handleChangeTitle}
                                     onBlur={handleBlur}
                                     maxLength={255}
                                     className={
@@ -397,8 +401,8 @@ function FotoAddingPage(props) {
                                     id="description"
                                     placeholder="Beschreibung der Fotografie"
                                     type="text"
-                                    value={values.description}
-                                    onChange={handleChange}
+                                    value={descriptionValue}
+                                    onChange={handleChangeDescription}
                                     onBlur={handleBlur}
                                     className={
                                         errors.description && touched.description ? 'text-input error' : 'text-input'
@@ -483,8 +487,8 @@ function FotoAddingPage(props) {
                                     prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Beschreibung der Fotografie"
                                     type="text"
-                                    value={values.gpsLocation}
-                                    onChange={handleChange}
+                                    value={locationValue}
+                                    onChange={handleChangeLocation}
                                     onBlur={handleBlur}
                                     className={
                                         errors.gpsLocation && touched.gpsLocation ? 'text-input error' : 'text-input'
@@ -504,8 +508,8 @@ function FotoAddingPage(props) {
                                     prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Beschreibung der Fotografie"
                                     type="text"
-                                    value={values.city}
-                                    onChange={handleChange}
+                                    value={cityValue}
+                                    onChange={handleChangeCity}
                                     onBlur={handleBlur}
                                     className={
                                         errors.city && touched.city ? 'text-input error' : 'text-input'
@@ -525,8 +529,8 @@ function FotoAddingPage(props) {
                                     prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Beschreibung der Fotografie"
                                     type="text"
-                                    value={values.country}
-                                    onChange={handleChange}
+                                    value={countryValue}
+                                    onChange={handleChangeCountry}
                                     onBlur={handleBlur}
                                     className={
                                         errors.country && touched.country ? 'text-input error' : 'text-input'

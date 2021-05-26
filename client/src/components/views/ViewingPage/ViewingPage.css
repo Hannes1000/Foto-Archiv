@@ -1,0 +1,80 @@
+.div-vieingPage-main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: -5px;
+    padding-bottom: 400px;
+    padding-top: 30px;
+}
+
+.imageGallery-viewingPage{
+}
+
+.input-viewingPage-all{
+    width: 80vw;
+}
+
+.title-viewinpage-smaller{
+    color: #c8d6e5 !important;
+    z-index: 1;
+    margin-top: 20px;
+}
+
+.title-viewingPage-main{
+    color: #c8d6e5 !important;
+    z-index: 1;
+    font-weight: bolder;
+}
+
+.image-gallery{
+    width: 90vw;
+}
+
+.div-backgroundBox-viewingPage{
+    position: absolute;
+    width: calc(100vw - 30px);
+    height: 200vh;
+    min-height: 450px;
+    min-width: 400px;
+}
+
+.div-backgroundBox2-viewingPage{
+    position: absolute;
+    width: calc(100vw - 30px);
+    height: 200vh;
+    min-height: 450px;
+    min-width: 400px;
+    background-color: rgba(34, 47, 62, 0.9);
+    top: 0;
+    left: 0;
+    z-index: 0.1;
+    border-radius: 10px;
+    border: 2px solid #40A9FF;
+    -webkit-box-shadow: 8px 12px 32px 5px #000000; 
+    box-shadow: 8px 12px 32px 5px #000000;
+}
+
+.title-viewingpage-description{
+    padding: 0px;
+    padding-right: auto;
+}
+
+.div-viewingPage-descritption{
+    width: auto;
+}
+
+@media only screen and (max-width: 570px) {
+    
+    .div-backgroundBox-viewingPage{
+        min-height: 500px;
+        min-width: 100%;
+    }
+    .div-backgroundBox2-viewingPage{
+        min-height: 500px;
+        min-width: 100%;
+    }
+
+}

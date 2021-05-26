@@ -3,9 +3,6 @@
     min-height: calc(100vh);
     z-index: -1;
     width: 100vw;
-
-
-    
     background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("./ressources/background.png");
     background-attachment: fixed;
 	background-size:cover;

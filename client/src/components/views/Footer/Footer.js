@@ -9,7 +9,7 @@ function Footer() {
             justifyContent: 'center', fontSize:'1rem', backgroundColor:"black", color:"white"
         }}>
            <p> Foto Archiv </p>
-           <Icon type="copyright" style={{position:"absolute", position:"relative", top:"-7px", right:"-5px"}}/>
+           <Icon type="copyright" style={{position:"relative", top:"-7px", right:"-5px"}}/>
         </div>
     )
 }

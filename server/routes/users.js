@@ -78,13 +78,6 @@ router.post("/register", (req, res) => {
         /*SQL-QUERRY*/
     })
     /*Encryption*/
-
-
-
-    /*if (err) return res.json({ success: false, err });
-        return res.status(200).json({
-            success: true
-        });*/
 });
 
 router.post("/login", (req, res) => {
@@ -233,5 +226,63 @@ router.get("/logout", auth, (req, res) => {
     });
     */
 });
+
+
+router.post("/getAllUsers", auth, (req, res) => {
+    /*SQL*/
+    var sql = "select u._id, u.role, u.email from fotoarchiv.users u";
+    /*SQL*/
+
+    /*SQL-QUERRY*/
+    connection.query(sql, function (err, result) {
+        if (err) {
+            return res.json({
+                success: false,
+                error: err
+            });
+        } else {
+            return res
+                .status(200)
+                .send({
+                    success: true,
+                    users: result
+                });
+        }
+    });
+    /*SQL-QUERRY*/ 
+});
+
+router.post("/editSingle", auth, (req, res) => {
+
+    /*SQL*/
+    var role = 0;
+    if(req.body.role === 0){
+        role = 1;
+    }
+    var sql = "update fotoarchiv.users u set u.role = ? where u._id = ?";
+    var values = [
+        role, 
+        req.body._id
+    ];
+    /*SQL*/
+
+    /*SQL-QUERRY*/
+    connection.query(sql, values, function (err, result) {
+        if (err) {
+            return res.json({
+                success: false,
+                error: err
+            });
+        } else {
+            return res
+                .status(200)
+                .send({
+                    success: true
+                });
+        }
+    });
+    /*SQL-QUERRY*/ 
+});
+
 
 module.exports = router;

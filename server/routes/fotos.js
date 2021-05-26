@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname)
         if (ext !== '.jpg' || ext !== '.png' || ext !== '.tif') {
-            return cb(res.status(400).end('only jpg, png are allowed'), false);
+            return cb(res.status(400).end('only jpg, png, tif are allowed'), false);
         }
         cb(null, true)
     }
@@ -141,13 +141,14 @@ router.post("/uploadFoto", auth, (req, res) => {
 });
 
 router.post("/allFotos", auth, (req, res) => {
-    var sql = "Select * from fotoarchiv.fotos"
+    var sql = "Select * from fotoarchiv.fotos f, fotoarchiv.locations l " +
+        "where f._id = l._fotosid";
 
     /*SQL-QUERRY*/
     connection.query(sql, function (err, result) {
         if (err) {
             console.log(err)
-            return res.json({ success: false, err })
+            return res.json({ success: false, error: err })
         } else {
             return res.status(200).json({
                 success: true,
@@ -178,24 +179,113 @@ router.post("/allTags", auth, (req, res) => {
 });
 
 router.post("/searchFotos", auth, (req, res) => {
+    const filterCopyrightSource = req.body.filterCopyrightSource
+    const filterAuthor = req.body.filterAuthor
+    const filtercreationDate = req.body.filtercreationDate
+    const filterTitle = req.body.filterTitle
+    const ilterImageMaterial = req.body.filterImageMaterial
+    const filterCountry = req.body.filterCountry
+    const filterCity = req.body.filterCity
+    const mainTag = req.body.mainTag
+    const filterDescription = req.body.filterDescription
 
-    var sql = "Select * from fotoarchiv.fotos as f " +
-        "where " +
-        "f.copyrightSource LIKE ? OR " +
-        "f.author LIKE ? OR " +
-        "f.description LIKE ? OR " +
-        "f.creationDate LIKE ? OR " +
-        "f.title LIKE ? OR " +
-        "f.imageMaterial LIKE ? ";
-
-    const values = [
-        "%" + req.body.searched + "%",
-        "%" + req.body.searched + "%",
-        "%" + req.body.searched + "%",
-        "%" + req.body.searched + "%",
-        "%" + req.body.searched + "%",
-        "%" + req.body.searched + "%"
+    var values = [
     ];
+
+    var sql = "Select * from fotoarchiv.fotos as f, fotoarchiv.locations l " +
+        "where f._id = l._fotosid ";
+
+
+    if (mainTag !== "false") {
+        sql += "and f.mainTag = ?";
+        values.push(mainTag);
+    }
+
+    var sqlUseFilterValueStart = "and (";
+    var sqlUseFilterValueEnd = ")";
+    var sqlFilterValue = "";
+    var setLastOr = false;
+
+    if (filterCopyrightSource === true) {
+        setLastOr = true;
+        sqlFilterValue += "f.copyrightSource LIKE ?";
+        values.push("%" + req.body.searched + "%");
+    }
+    if (filterAuthor === true) {
+        if (setLastOr === true) {
+            sqlFilterValue += " OR "
+        }
+        setLastOr = true;
+        sqlFilterValue += "f.author LIKE ?"
+        values.push("%" + req.body.searched + "%");
+    }
+    if (filtercreationDate === true) {
+        if (setLastOr === true) {
+            sqlFilterValue += " OR "
+        }
+        setLastOr = true;
+        sqlFilterValue += "f.creationDate LIKE ?"
+        values.push("%" + req.body.searched + "%");
+    }
+    if (filterTitle === true) {
+        if (setLastOr === true) {
+            sqlFilterValue += " OR "
+        }
+        setLastOr = true;
+        sqlFilterValue += "f.title LIKE ?"
+        values.push("%" + req.body.searched + "%");
+    }
+    if (ilterImageMaterial === true) {
+        if (setLastOr === true) {
+            sqlFilterValue += " OR "
+        }
+        setLastOr = true;
+        sqlFilterValue += "f.imageMaterial LIKE ?"
+        values.push("%" + req.body.searched + "%");
+    }
+    if (filterCountry === true) {
+        if (setLastOr === true) {
+            sqlFilterValue += " OR "
+        }
+        setLastOr = true;
+        sqlFilterValue += "l.country LIKE ?"
+        values.push("%" + req.body.searched + "%");
+    }
+    if (filterDescription === true) {
+        if (setLastOr === true) {
+            sqlFilterValue += " OR "
+        }
+        setLastOr = true;
+        sqlFilterValue += "f.description LIKE ?"
+        values.push("%" + req.body.searched + "%");
+    }
+    if (filterCity === true) {
+        if (setLastOr === true) {
+            sqlFilterValue += " OR "
+        }
+        setLastOr = true;
+        sqlFilterValue += "l.city LIKE ?"
+        values.push("%" + req.body.searched + "%");
+    }
+
+    if (setLastOr === false) {
+        sqlUseFilterValueStart = "";
+        sqlUseFilterValueEnd = "";
+    }
+
+    sql += sqlUseFilterValueStart + sqlFilterValue + sqlUseFilterValueEnd;
+
+    // console.log(sql);
+    // console.log(values);
+
+    //console.log(sql);
+    // console.log(req.body.filterCopyrightSource)
+    // console.log(req.body.filterAuthor)
+    // console.log(req.body.filtercreationDate)
+    // console.log(req.body.filterTitle)
+    // console.log(req.body.filterImageMaterial)
+    // console.log(req.body.filterCountry)
+    // console.log(req.body.filterCity)
 
     /*SQL-QUERRY*/
     connection.query(sql, values, function (err, result) {
@@ -234,5 +324,27 @@ router.post("/addTag", auth, (req, res) => {
     /*SQL-QUERRY*/
 });
 
+
+router.post("/getFotoById", auth, (req, res) => {
+
+    var sql = "select * from fotoarchiv.fotos f, fotoarchiv.locations l where f._id = ? and f._id = l._fotosid"
+    values = [
+        req.body._id
+    ];
+
+    /*SQL-QUERRY*/
+    connection.query(sql, values, function (err, result) {
+        if (err) {
+            console.log(err)
+            return res.json({ success: false, error: err })
+        } else {
+            return res.status(200).json({
+                success: true,
+                fotoData: result
+            });
+        }
+    });
+    /*SQL-QUERRY*/
+});
 
 module.exports = router;

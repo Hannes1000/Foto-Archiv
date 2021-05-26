@@ -122,16 +122,11 @@ div.card-row.row{
 .Searchbar-landingPage{
     width: 40vw;
     max-width: 600px;
-    min-width: 400px;
+    min-width: 350px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
     margin-bottom: 20px;
-}
-
-
-.button-landingPage-collapsible{
-    width: calc(100vw - 40px);
 }
 
 .collapsible-landingPage{
@@ -143,10 +138,69 @@ div.card-row.row{
     margin-right: 10px;
 }
 
+
+.button-landingPage-collapsible{
+    width: calc(100vw - 40px);
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+}
+
+.p-landingPage-collappsiblebutton{
+    margin-top: 3px;
+    padding-right: 10px;
+    font-size: 15px;
+}
+
+.div-landingpage-checkboxes{
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-landingPage{
+    margin: 0px !important;
+    margin-left: 10px !important;
+}
+
+.p-landingPage-checkboxName{
+    color: #c8d6e5;
+    margin: 0px !important;
+    margin-left: 5px !important;
+}
+
+.div-landingPage-CheckboxWrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.selection-landingpage{
+    margin-top: 10px;
+    min-width: 350px;
+    margin-left: 10px;
+}
+
+.div-landingPage-filtermain{
+    background-color: rgba(34, 47, 62, 0.9);
+    border-radius: 10px;
+    border: 2px solid #40A9FF;
+    margin-right: 10px;
+    padding-bottom: 20px;
+}
+
+
+.div-landingPage-titlebutton{
+    display: flex;
+}
+
+.button-landingPage-cardtitle{
+    position: relative;
+    top: 0px;
+}
+
 @media only screen and (max-width: 600px) {
 
     .Searchbar-landingPage{
-        width: 100%;
+        width: calc(100% - 12px);
     }
     
 }
