@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Dropzone from "react-dropzone"
 import { Icon } from "antd"
 import "./FileUpload.css"
@@ -35,6 +35,10 @@ function FileUpload(props) {
         setImages(newImages);
         props.refreshFunction(newImages);
     }
+
+    useEffect(() => {
+        setImages(()=>[props.originalImage]);
+    }, [props.originalImage], []);
 
     return (
         <div className="div-main">

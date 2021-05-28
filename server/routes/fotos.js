@@ -304,7 +304,8 @@ router.post("/searchFotos", auth, (req, res) => {
 
 router.post("/addTag", auth, (req, res) => {
 
-    var sql = "insert into fotoarchiv.tags (name) values (?); select LAST_INSERT_ID() as _id"
+    var sql = "insert into fotoarchiv.tags (name) values (?);" +
+    "select LAST_INSERT_ID() as _id";
     values = [
         req.body.name
     ];

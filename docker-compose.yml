@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+    client:
+        build: ./client
+        image: foto-archiv-client
+        container_name: foto-archiv-client
+        depends_on:
+          - db
+        ports:
+          - "3000:3000"
+        restart: unless-stopped
+
+    backend:
+        build: ./server
+        image: foto-archiv-server
+        container_name: foto-archiv-server
+        depends_on:
+          - db
+        ports:
+          - "5000:5000"
+        restart: unless-stopped
+        volumes: 
+            - ./uploads:/uploads
+
+    db:
+        image: mysql:latest
+        container_name: foto-archiv-db
+        environment:
+            MYSQL_ROOT_PASSWORD: Matura2021
+            #MYSQL_DATABASE:
+            #MYSQL_USER:
+            #MYSQL_PASSWORD:
+        volumes:
+            - foto-archiv-db_data:/var/lib/mysql
+        ports:
+            - "3307:3306"
+        restart: unless-stopped
+
+    adminer:
+        image: adminer:latest
+        container_name: foto-archiv-adminer
+        depends_on:
+            - db
+        ports:
+            - "8080:8080"
+        restart: unless-stopped
+
+volumes:
+    foto-archiv-db_data:
+        external: true
+

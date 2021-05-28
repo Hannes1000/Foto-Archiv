@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import FileUpload from "../../utils/FileUpload"
 import { Formik } from 'formik';
-import * as Yup from 'yup';
 import { Form, Input, Button, Switch, DatePicker, Select, Typography } from 'antd';
 import CopyrightOutlined from '@ant-design/icons/CopyrightOutlined';
 import UserOutlined from '@ant-design/icons/UserOutlined';
@@ -289,7 +288,7 @@ function FotoAddingPage(props) {
                         <Form onSubmit={handleSubmit} className="form-fotoAddingPage" >
 
                             <label className="label-fotoAddingPage-titel">Original Fotografie hochladen:</label>
-                            <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateOriginalImage}></FileUpload>
+                            <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateOriginalImage} originalImage={originalImage}></FileUpload>
 
                             <label className="label-fotoAddingPage-titel">Komprimiertes Bild hochladen (*.jpg oder *.png):</label>
                             <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateCompressedImage}></FileUpload>
