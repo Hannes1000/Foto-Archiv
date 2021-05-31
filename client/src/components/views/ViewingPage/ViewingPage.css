@@ -10,60 +10,82 @@
     padding-top: 30px;
 }
 
-.imageGallery-viewingPage{
-}
-
 .input-viewingPage-all{
-    width: 80vw;
+    width: 100%;
+    padding: 5px;
 }
 
-.title-viewinpage-smaller{
-    color: #c8d6e5 !important;
-    z-index: 1;
-    margin-top: 20px;
+.div-viewingPage-titleMain{
+
+}
+
+.div-viewingPage-main-title{
+    text-align: center;
 }
 
 .title-viewingPage-main{
-    color: #c8d6e5 !important;
-    z-index: 1;
+    color: #d1e0f0 !important;
+    z-index: 2;
     font-weight: bolder;
+    vertical-align: middle;
 }
 
 .image-gallery{
     width: 90vw;
-}
-
-.div-backgroundBox-viewingPage{
-    position: absolute;
-    width: calc(100vw - 30px);
-    height: 200vh;
-    min-height: 450px;
-    min-width: 400px;
-}
-
-.div-backgroundBox2-viewingPage{
-    position: absolute;
-    width: calc(100vw - 30px);
-    height: 200vh;
-    min-height: 450px;
-    min-width: 400px;
-    background-color: rgba(34, 47, 62, 0.9);
-    top: 0;
-    left: 0;
-    z-index: 0.1;
+    background-color: #01a4a444;
+    z-index: 1;
+    border: 2px solid;
     border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
     border: 2px solid #40A9FF;
     -webkit-box-shadow: 8px 12px 32px 5px #000000; 
     box-shadow: 8px 12px 32px 5px #000000;
 }
 
-.title-viewingpage-description{
-    padding: 0px;
-    padding-right: auto;
+.title-viewingPage-title{
+    color: #c8d6e5 !important;
+    z-index: 2;
 }
 
-.div-viewingPage-descritption{
-    width: auto;
+.title-viewinpage-smaller{
+    color: #c8d6e5 !important;
+    z-index: 2;
+}
+
+.label-viewingpage-display{
+    color: #539eee !important;
+    z-index: 2;
+}
+
+.div-viewingPage-description{
+    background-color: #01a4a444;
+    z-index: 1;
+    word-wrap: break-word;
+    margin-top: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #40A9FF;
+    -webkit-box-shadow: 8px 12px 32px 5px #000000; 
+    box-shadow: 8px 12px 32px 5px #000000;
+}
+
+.div-backgroundBox-viewingPage{
+    width: 95%;
+    border-radius: 10px;
+    border: 2px solid #40A9FF;
+    -webkit-box-shadow: 8px 12px 32px 5px #000000; 
+    box-shadow: 8px 12px 32px 5px #000000;
+    padding: 50px;
+    margin-left: 0px;
+    margin-right: 2px;
+    background-color: rgba(34, 47, 62, 0.9);
+    background-clip: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 @media only screen and (max-width: 570px) {

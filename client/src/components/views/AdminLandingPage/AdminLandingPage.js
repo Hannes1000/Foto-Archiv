@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import "./LandingPage.css"
+import "./AdminLandingPage.css"
 import { Card, CardTitle, CardImg, CardBody, Row, Col } from 'reactstrap';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Input, Button, Checkbox, Select } from 'antd';
 import DownOutlined from '@ant-design/icons/DownOutlined';
+import EditOutlined from '@ant-design/icons/EditOutlined';
 import UpOutlined from '@ant-design/icons/UpOutlined';
+import DeleteOutlined from '@ant-design/icons/DeleteOutlined';
 import 'react-toastify/dist/ReactToastify.css';
 import Collapsible from 'react-collapsible';
 
@@ -160,6 +162,18 @@ function LandingPage(props) {
         setMainTagValue(value);
     }
 
+    function handleEditClick(_id) {
+        //console.log(_id)
+        //console.log(props.user.userData.role)
+        if (props.user.userData.role === 1) {
+            props.history.push("/fotos/edit/" + _id);
+        }
+    }
+
+    function handleDeleteClick(_id){
+
+    }
+
     const notifyError = (text) => toast.error(text, {
         position: "bottom-right",
         autoClose: 5000,
@@ -174,16 +188,22 @@ function LandingPage(props) {
         return (
             <Col key={index} xs="12" sm="6" md="4" lg="4" xl="2" xxl="1" className="card-col">
 
-                <Link to={{
-                    pathname: "/fotos/view/" + foto._id,
-                    params: fotos,
-                    indexValue: index,
-                    exact: true,
-                    strict: true
-                }}
-                    style={{ textDecoration: 'none' }}
-                >
-                    <Card id="card-fotodisplay">
+                <Card id="card-fotodisplay">
+                    <Button onClick={() => handleEditClick(foto._fotosid)} type="primary" className="button-adminLandingPage-edit">
+                        <EditOutlined />
+                    </Button>
+                    <Button shape="circle" onClick={() => handleDeleteClick(foto._fotosid)} type="danger" className="button-adminLandingPage-delete">
+                        <DeleteOutlined />
+                    </Button>
+                    <Link to={{
+                        pathname: "/fotos/view/" + foto._id,
+                        params: fotos,
+                        indexValue: index,
+                        exact: true,
+                        strict: true
+                    }}
+                        style={{ textDecoration: 'none' }}
+                    >
                         <CardBody className="cardBody-landingPage">
                             <div className="div-landingPage-titlebutton">
                                 <CardTitle tag="h5" className="card-text">{foto.title}</CardTitle>
@@ -195,8 +215,8 @@ function LandingPage(props) {
                         <div className="card-description card-text">
                             {foto.description}
                         </div>
-                    </Card>
-                </Link>
+                    </Link>
+                </Card>
             </Col >
         )
     });

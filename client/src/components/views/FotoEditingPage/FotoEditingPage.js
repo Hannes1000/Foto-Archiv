@@ -19,9 +19,11 @@ const { Title } = Typography;
 
 function FotoAddingPage(props) {
     const [originalImage, setOriginalImage] = useState([]);
+    const [originalImageInitial, setOriginalImageInitial] = useState([]);
     const [compressedImage, setCompressedImage] = useState([]);
-    const [mainTagValue, setMainTagValue] = useState('building');
-    const [imageMaterialValue, setImageMaterialValue] = useState('negativ');
+    const [compressedImageInitial, setCompressedImageInitial] = useState([]);
+    const [mainTagValue, setMainTagValue] = useState('');
+    const [imageMaterialValue, setImageMaterialValue] = useState('');
     const [creationDateValue, setCreationDateValue] = useState(moment());
     const [authorValue, setAuthorValue] = useState("");
     const [copyrightSourceValue, setCopyrightSourceValue] = useState("");
@@ -184,10 +186,12 @@ function FotoAddingPage(props) {
             if (response.data.success) {
                 const fotoData = response.data.fotoData[0];
                 //console.log(fotoData)
-                console.log(fotoData.originalImage);
-                console.log(fotoData.compressedImage);
-                setOriginalImage(fotoData.originalImage);
-                setCompressedImage(fotoData.compressedImage);
+                //console.log(fotoData.originalImage);
+                //console.log(fotoData.compressedImage);
+                //setOriginalImage(fotoData.originalImage);
+                //setCompressedImage(fotoData.compressedImage);
+                setOriginalImageInitial(fotoData.originalImage);
+                setCompressedImageInitial(fotoData.compressedImage);
                 setMainTagValue(fotoData.mainTag);
                 setImageMaterialValue(fotoData.imageMaterial);
                 setCreationDateValue(moment(fotoData.creationDate, 'YYYY-MM-DD'));
@@ -210,10 +214,6 @@ function FotoAddingPage(props) {
         <Formik
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
-                    /*let dataToSubmit = {
-                        email: values.email,
-                        password: values.password
-                    };*/
 
                     let newDate = new Date()
                     let date = newDate.getDate();
@@ -235,10 +235,11 @@ function FotoAddingPage(props) {
                     console.log("country      " + countryValue)
                     console.log("imageMat     " + imageMaterialValue)
                     console.log("tags         " + tags)
+                    console.log("id           " + props.match.params.id)
                     //console.log("suggestion   " + suggestions)
 
                     let dataToSubmit = {
-                        _userid: props.user.userData._id,
+                        _id: props.match.params.id,
                         originalImage: originalImage[0],
                         compressedImage: compressedImage[0],
                         copyrightSource: copyrightSourceValue,
@@ -255,20 +256,18 @@ function FotoAddingPage(props) {
                         tags: tags
                     }
 
-                    Axios.post("/api/fotos/", dataToSubmit)
+                    Axios.post("/api/fotos/updatePicture", dataToSubmit)
                         .then(response => {
                             if (response.data.success === true) {
-                                notify("Fotografie hinzugefügt!");
-                                //alert("nice!");
+                                notify("Änderung gespeichert!");
+                                setSubmitting(false);
                             } else {
-                                //console.log(response.data)
-                                //alert("Failed to fetch product data")
-                                notifyError("Hinzufügen fehlgeschlagen!");
+                                notifyError("Speichern fehlgeschlagen!");
                                 notifyError("Fehler: " + response.data.error.code);
+                                setSubmitting(false);
                             }
                         })
-                    setSubmitting(false);
-                }, 500);
+                }, 1000);
             }}
         >
             {props => {
@@ -283,22 +282,22 @@ function FotoAddingPage(props) {
                 } = props;
                 return (
                     <div className="div-addingPage-main">
-                        <Title level={2}>Fotografie hinzufügen</Title>
+                        <Title level={2}>Fotografie bearbeiten</Title>
                         <ToastContainer />
                         <Form onSubmit={handleSubmit} className="form-fotoAddingPage" >
 
                             <label className="label-fotoAddingPage-titel">Original Fotografie hochladen:</label>
-                            <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateOriginalImage} originalImage={originalImage}></FileUpload>
+                            <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateOriginalImage} defaultImage={originalImageInitial}></FileUpload>
 
                             <label className="label-fotoAddingPage-titel">Komprimiertes Bild hochladen (*.jpg oder *.png):</label>
-                            <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateCompressedImage}></FileUpload>
+                            <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateCompressedImage} defaultImage={compressedImageInitial}></FileUpload>
 
                             <Form.Item>
                                 <label className="label-fotoAddingPage-titel">Bildmaterial:</label>
 
                                 <Select
                                     onChange={handleImageMaterial}
-                                    defaultValue={imageMaterialValue}
+                                    value={imageMaterialValue}
                                 >
                                     <Select.Option
                                         value="negativ"
@@ -419,7 +418,7 @@ function FotoAddingPage(props) {
 
                                 <Select
                                     onChange={handleChangeMainTag}
-                                    defaultValue={mainTagValue}
+                                    value={mainTagValue}
                                 >
                                     <Select.Option
                                         value="building"
@@ -545,7 +544,7 @@ function FotoAddingPage(props) {
                             <Form.Item>
                                 <div>
                                     <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
-                                        Fotografie Speichern
+                                        Änderungen Speichern
                                     </Button>
                                 </div>
                             </Form.Item>

@@ -63,55 +63,57 @@ function ViewingPage(props) {
     <div className="div-vieingPage-main">
       <div className="div-backgroundBox-viewingPage">
         <div className="div-backgroundBox2-viewingPage">
+          <div className="div-viewingPage-main-title">
+            <Title className="title-viewingPage-main" level={2}>Bilder Galerie</Title>
+            <Title className="title-viewingPage-title" level={4}>{titleValue}</Title>
+          </div>
 
+          <ImageGallery
+            className="imageGallery-viewingPage"
+            ref={refImg}
+            items={fotos}
+            startIndex={startIndexValue}
+            thumbnailPosition="left"
+            showBullets={true}
+            showIndex={true}
+            onSlide={handleSlide}
+          />
+
+          <div className="div-viewingPage-description">
+            <label className="input-viewingPage-all title-viewinpage-smaller">Beschreibung</label>
+            <label className="input-viewingPage-all label-viewingpage-display">
+              {descriptionValue}
+            </label>
+          </div>
+
+          <label className="input-viewingPage-all title-viewinpage-smaller">Urheber</label>
+          <label className="input-viewingPage-all label-viewingpage-display">
+            {copyrightSourceValue}
+          </label>
+
+          <label className="input-viewingPage-all title-viewinpage-smaller">Besitzer</label>
+          <label className="input-viewingPage-all label-viewingpage-display">
+            {authorValue}
+          </label>
+
+          <label className="input-viewingPage-all title-viewinpage-smaller">Datum</label>
+          <label className="input-viewingPage-all label-viewingpage-display">
+            {creationDate}
+          </label>
+
+          <label className="input-viewingPage-all title-viewinpage-smaller">Land</label>
+          <label className="input-viewingPage-all label-viewingpage-display">
+            {coutnryValue}
+          </label>
+
+          <label className="input-viewingPage-all title-viewinpage-smaller">Stadt/Dorf</label>
+          <label className="input-viewingPage-all label-viewingpage-display">
+            {cityValue}
+          </label>
+
+          {/* <button onClick={() => console.log(refImg.current.getCurrentIndex())}>kjhlkkj</button> */}
         </div>
       </div>
-      <Title className="title-viewingPage-main" level={2}>Bilder Galerie</Title>
-      <Title className="title-viewinpage-smaller" level={4}>{titleValue}</Title>
-      <ImageGallery
-        className="imageGallery-viewingPage"
-        ref={refImg}
-        items={fotos}
-        startIndex={startIndexValue}
-        thumbnailPosition="left"
-        showBullets={true}
-        showIndex={true}
-        onSlide={handleSlide}
-      />
-      <div className="div-viewingPage-descritption">
-        <Title className="title-viewinpage-smaller title-viewingpage-description" level={4}>Beschreibung</Title>
-        <Input.TextArea className="input-viewingPage-all"
-          value={descriptionValue}
-          rows={6}
-        >
-        </Input.TextArea>
-      </div>
-      <label className="title-viewinpage-smaller">Urheber</label>
-      <Input className="input-viewingPage-all"
-        value={copyrightSourceValue}
-      >
-      </Input>
-      <label className="title-viewinpage-smaller">Besitzer</label>
-      <Input className="input-viewingPage-all"
-        value={authorValue}
-      >
-      </Input>
-      <label className="title-viewinpage-smaller">Datum</label>
-      <Input className="input-viewingPage-all"
-        value={creationDate}
-      >
-      </Input>
-      <label className="title-viewinpage-smaller">Land</label>
-      <Input className="input-viewingPage-all"
-        value={coutnryValue}
-      >
-      </Input>
-      <label className="title-viewinpage-smaller">Stadt/Dorf</label>
-      <Input className="input-viewingPage-all"
-        value={cityValue}
-      >
-      </Input>
-      {/* <button onClick={() => console.log(refImg.current.getCurrentIndex())}>kjhlkkj</button> */}
     </div>
   )
 }

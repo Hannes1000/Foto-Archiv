@@ -18,11 +18,8 @@ function LeftMenu(props) {
           <Menu.Item key="addFoto" >
             <a id="route-link" href="/fotos/add">Hinzufügen</a>
           </Menu.Item>
-          <Menu.Item key="viewFoto" >
-            <a id="route-link" href="/fotos/view">Anschauen</a>
-          </Menu.Item>
-          <Menu.Item key="test">
-            <a id="route-link" href="/test">Test</a>
+          <Menu.Item key="editFoto" >
+            <a id="route-link" href="/fotos/edit">Bearbeiten</a>
           </Menu.Item>
         </MenuItemGroup>
         <MenuItemGroup title="Benutzer Verwalten">

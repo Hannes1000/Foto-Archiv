@@ -348,4 +348,57 @@ router.post("/getFotoById", auth, (req, res) => {
     /*SQL-QUERRY*/
 });
 
+router.post("/updatePicture", auth, (req, res) => {
+
+    //const _userid = req.body._userid;
+    const _id = req.body._id
+    const originalImage = req.body.originalImage
+    const compressedImage = req.body.compressedImage
+    const copyrightSource = req.body.copyrightSource
+    const author = req.body.author
+    const mainTag = req.body.mainTag
+    const description = req.body.description
+    //const uploadDate = req.body.uploadDate
+    const creationDate = req.body.creationDate
+    const title = req.body.title
+    const gpsLocation = req.body.gpsLocation
+    const country = req.body.country
+    const city = req.body.city
+    const imageMaterial = req.body.imageMaterial
+    const tags = req.body.tags
+
+    var sql = "UPDATE fotoarchiv.fotos f, fotoarchiv.locations l "+
+    "set f.originalImage = ?, f.compressedImage = ?, f.copyrightSource = ?, f.author = ?, f.mainTag = ?, f.description = ?, f.creationDate = ?, f.title = ?, f.imageMaterial = ?, l.gpsLocation = ?, l.country = ?, l.city = ? "+
+    "where f._id = ? AND l._fotosid = ?;"
+    values = [
+        originalImage,
+        compressedImage,
+        copyrightSource,
+        author,
+        mainTag,
+        description,
+        creationDate,
+        title,
+        imageMaterial,
+        gpsLocation,
+        country,
+        city,
+        _id,
+        _id
+    ];
+
+    /*SQL-QUERRY*/
+    connection.query(sql, values, function (err, result) {
+        if (err) {
+            console.log(err)
+            return res.json({ success: false, error: err })
+        } else {
+            return res.status(200).json({
+                success: true
+            });
+        }
+    });
+    /*SQL-QUERRY*/
+});
+
 module.exports = router;

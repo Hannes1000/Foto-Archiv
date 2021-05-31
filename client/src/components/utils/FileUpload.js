@@ -20,6 +20,7 @@ function FileUpload(props) {
         Axios.post("/api/fotos/uploadImage", formData, config)
             .then(response => {
                 if (response.data.success) {
+                    //console.log(response.data.image)
                     setImages([...images, response.data.image])
                     props.refreshFunction([...images, response.data.image])
                 } else {
@@ -27,7 +28,7 @@ function FileUpload(props) {
                 }
             })
     }
-    
+
     const onDelete = (image) => {
         const currentIndex = images.indexOf(image);
         let newImages = [...images]
@@ -37,8 +38,12 @@ function FileUpload(props) {
     }
 
     useEffect(() => {
-        setImages(()=>[props.originalImage]);
-    }, [props.originalImage], []);
+        //console.log(props.defaultImage)
+        if(props.defaultImage){
+            setImages([props.defaultImage])
+            props.refreshFunction([props.defaultImage])
+        }
+    }, [props.defaultImage]);
 
     return (
         <div className="div-main">

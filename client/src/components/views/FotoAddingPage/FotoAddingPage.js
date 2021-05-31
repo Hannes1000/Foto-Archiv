@@ -256,15 +256,13 @@ function FotoAddingPage(props) {
                         .then(response => {
                             if (response.data.success === true) {
                                 notify("Fotografie hinzugefügt!");
-                                //alert("nice!");
+                                setSubmitting(false);
                             } else {
-                                //console.log(response.data)
-                                //alert("Failed to fetch product data")
                                 notifyError("Hinzufügen fehlgeschlagen!");
                                 notifyError("Fehler: " + response.data.error.code);
+                                setSubmitting(false);
                             }
                         })
-                    setSubmitting(false);
                 }, 500);
             }}
         >
