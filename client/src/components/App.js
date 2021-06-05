@@ -13,6 +13,8 @@ import ViewingPage from './views/ViewingPage/ViewingPage';
 import UserManagePage from './views/UserManagePage/UserManagePage';
 import FotoEditingPage from './views/FotoEditingPage/FotoEditingPage';
 import AdminLandingPage from './views/AdminLandingPage/AdminLandingPage';
+import HomePage from './views/HomePage/HomePage';
+import AboutPage from './views/AboutPage/AboutPage';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <NavBar />
       <div id="body-background">
         <Switch>
+          <Route exact path="/" component={Auth(HomePage, false)} />
+          <Route exact path="/aboutPage" component={Auth(AboutPage, false)} />
           <Route exact path="/landingPage" component={Auth(LandingPage, true)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />

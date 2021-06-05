@@ -9,6 +9,7 @@ import DownOutlined from '@ant-design/icons/DownOutlined';
 import UpOutlined from '@ant-design/icons/UpOutlined';
 import 'react-toastify/dist/ReactToastify.css';
 import Collapsible from 'react-collapsible';
+import { USER_IP } from '../../IPConfig';
 
 function LandingPage(props) {
     const [fotos, setFotos] = useState([]);
@@ -190,7 +191,7 @@ function LandingPage(props) {
                             </div>
                         </CardBody>
                         <div id="card-img-div">
-                            <CardImg id="card-img" src={"https://localhost:5000/" + foto.compressedImage} alt="Card image cap" />
+                            <CardImg id="card-img" src={"https://"+USER_IP+":5000/" + foto.compressedImage} alt="Card image cap" />
                         </div>
                         <div className="card-description card-text">
                             {foto.description}

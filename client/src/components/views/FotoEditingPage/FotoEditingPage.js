@@ -153,7 +153,7 @@ function FotoAddingPage(props) {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        onClose: () => props.history.push("/")
+        onClose: () => props.history.push("/landingPage")
     });
 
     function handleSaveNewTag(){

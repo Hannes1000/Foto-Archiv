@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import ImageGallery from 'react-image-gallery';
+import {USER_IP} from "./../../IPConfig";
 import {
   Typography,
   Input
@@ -33,7 +34,7 @@ function ViewingPage(props) {
     }
     var arrFotos = []
     for (let i = 0; i < props.location.params.length; i++) {
-      arrFotos.push({ "original": "https://localhost:5000/" + props.location.params[i].compressedImage, "thumbnail": "https://localhost:5000/" + props.location.params[i].compressedImage, "thumbnailTitle": props.location.params[i].title });
+      arrFotos.push({ "original": "https://"+USER_IP+":5000/" + props.location.params[i].compressedImage, "thumbnail": "https://"+USER_IP+":5000/" + props.location.params[i].compressedImage, "thumbnailTitle": props.location.params[i].title });
       //console.log(props.location.params[i].compressedImage)
     }
     setFotos(arrFotos);
@@ -84,32 +85,38 @@ function ViewingPage(props) {
             <label className="input-viewingPage-all label-viewingpage-display">
               {descriptionValue}
             </label>
+            <div className="div-viewingPage-line"></div>
+
+            <label className="input-viewingPage-all title-viewinpage-smaller">Urheber</label>
+            <label className="input-viewingPage-all label-viewingpage-display">
+              {copyrightSourceValue}
+            </label>
+            <div className="div-viewingPage-line"></div>
+
+            <label className="input-viewingPage-all title-viewinpage-smaller">Besitzer</label>
+            <label className="input-viewingPage-all label-viewingpage-display">
+              {authorValue}
+            </label>
+            <div className="div-viewingPage-line"></div>
+
+            <label className="input-viewingPage-all title-viewinpage-smaller">Datum</label>
+            <label className="input-viewingPage-all label-viewingpage-display">
+              {creationDate}
+            </label>
+            <div className="div-viewingPage-line"></div>
+
+            <label className="input-viewingPage-all title-viewinpage-smaller">Land</label>
+            <label className="input-viewingPage-all label-viewingpage-display">
+              {coutnryValue}
+            </label>
+            <div className="div-viewingPage-line"></div>
+
+            <label className="input-viewingPage-all title-viewinpage-smaller">Stadt/Dorf</label>
+            <label className="input-viewingPage-all label-viewingpage-display">
+              {cityValue}
+            </label>
+            <div className="div-viewingPage-line"></div>
           </div>
-
-          <label className="input-viewingPage-all title-viewinpage-smaller">Urheber</label>
-          <label className="input-viewingPage-all label-viewingpage-display">
-            {copyrightSourceValue}
-          </label>
-
-          <label className="input-viewingPage-all title-viewinpage-smaller">Besitzer</label>
-          <label className="input-viewingPage-all label-viewingpage-display">
-            {authorValue}
-          </label>
-
-          <label className="input-viewingPage-all title-viewinpage-smaller">Datum</label>
-          <label className="input-viewingPage-all label-viewingpage-display">
-            {creationDate}
-          </label>
-
-          <label className="input-viewingPage-all title-viewinpage-smaller">Land</label>
-          <label className="input-viewingPage-all label-viewingpage-display">
-            {coutnryValue}
-          </label>
-
-          <label className="input-viewingPage-all title-viewinpage-smaller">Stadt/Dorf</label>
-          <label className="input-viewingPage-all label-viewingpage-display">
-            {cityValue}
-          </label>
 
           {/* <button onClick={() => console.log(refImg.current.getCurrentIndex())}>kjhlkkj</button> */}
         </div>

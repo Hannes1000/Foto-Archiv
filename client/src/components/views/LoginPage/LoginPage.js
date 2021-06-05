@@ -53,7 +53,7 @@ function LoginPage(props) {
                 } else {
                   localStorage.removeItem('rememberMe');
                 }
-                props.history.push("/");
+                props.history.push("/landingPage");
                 window.location.reload();
               } else {
                 setFormErrorMessage('Passwort oder E-Mail wurden nicht gefunden')

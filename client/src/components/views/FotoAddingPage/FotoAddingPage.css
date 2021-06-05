@@ -19,6 +19,7 @@
 }
 
 .label-fotoAddingPage-titel{
+    color: #ffffffc2 !important;
     font-weight: bold;
     font-size: 40px;
 }
@@ -51,4 +52,62 @@
 }
 
 .form-fotoAddingPage{
+}
+
+.div-fotoAddingPage-Background{
+    width: 95%;
+    border-radius: 10px;
+    border: 2px solid #40A9FF;
+    -webkit-box-shadow: 8px 12px 32px 5px #000000; 
+    box-shadow: 8px 12px 32px 5px #000000;
+    padding: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 0px;
+    margin-right: 2px;
+    background-color: rgba(34, 47, 62, 0.9);
+    background-clip: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ant-input{
+    background-color: #00000091;
+}
+
+.ant-select-selection{
+    background-color: #00000091 !important;
+    color: #ffffffc2;
+}
+
+.ant-select-selection{
+    background-color: #00000091 !important;
+    color: #ffffffc2;
+}
+
+.option-fotoAddingPage{
+    background-color: #000000d7 !important;
+    color: #ffffffc2;
+}
+
+.option-fotoAddingPage:hover{
+    background-color: #00000088 !important;
+    color: #ffffffc2;
+}
+
+.reactTages-fotoaddingPage-tags{
+    background-color: #00000088 !important;
+    color: #ffffffc2;   
+}
+
+.div.ReactTags__tagInput{
+    background-color: #00000088 !important;
+    color: #ffffffc2;   
+}
+
+.input.ReactTags__tagInputField{
+    background-color: #00000088 !important;
+    color: #ffffffc2;  
 }

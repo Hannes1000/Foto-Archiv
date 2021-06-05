@@ -186,6 +186,14 @@
   color: #01a3a4;
 }
 
+.ant-menu-submenu{
+  background-color: #222f3e !important; 
+}
+
+.ant-menu-submenu > .ant-menu{
+  background-color: #222f3e !important; 
+}
+
 @media (max-width: 767px) {
   .menu__mobile-button {
     display: inline-block !important;

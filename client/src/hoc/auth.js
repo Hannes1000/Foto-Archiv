@@ -21,7 +21,7 @@ export default function (ComposedClass, reload, adminRoute = null) {
                     }
                     else {
                         if (reload === false) {
-                            props.history.push('/')
+                            //props.history.push('/')
                         }
                     }
                 }

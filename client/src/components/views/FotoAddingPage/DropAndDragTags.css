@@ -100,7 +100,8 @@ div.ReactTags__suggestions li {
     left: -40px;
     border-bottom: 1px solid #ddd;
     margin: 0px;
-    background:white;
+    background-color: #111111 !important;
+    color: #ffffffc2;   
 }
 
 
@@ -110,10 +111,26 @@ div.ReactTags__suggestions li mark {
     font-weight: 600;
 }
 div.ReactTags__suggestions ul li.ReactTags__activeSuggestion {
-    background: #b7cfe0;
+    background-color: #202020 !important;
+    color: #ffffffc2;   
     cursor: pointer;
 }
 
 div.ReactTags__selected{
     max-width: 60vw;
+}
+
+.input.ReactTags__tagInputField{
+    background-color: #111111 !important;
+    color: #ffffffc2; 
+}
+
+.div.ReactTags__tagInput{
+    background-color: #111111 !important;
+    color: #ffffffc2; 
+}
+
+.input{
+    background-color: #111111 !important;
+    color: #ffffffc2; 
 }

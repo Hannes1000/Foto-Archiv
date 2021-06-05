@@ -3,6 +3,7 @@ import Dropzone from "react-dropzone"
 import { Icon } from "antd"
 import "./FileUpload.css"
 import Axios from "axios"
+import { USER_IP } from '../IPConfig'
 
 
 function FileUpload(props) {
@@ -70,7 +71,7 @@ function FileUpload(props) {
                 <div className="div-displayImage">
                     {images.map((image, index) => (
                         <div key={index} onClick={() => onDelete(image)}>
-                            <img className="img-images" src={`https://localhost:5000/${image}`} alt={`productImg-${index}`}></img>
+                            <img className="img-images" src={`https://` + USER_IP+`:5000/${image}`} alt={`productImg-${index}`}></img>
                         </div>
                     ))}
                 </div>

@@ -102,7 +102,7 @@ function RegisterPage(props) {
               </div>
             </div>
             <h2 className="title-loginPage">Sign up</h2>
-            <Form style={{ minWidth: '350px' }} {...formItemLayout} onSubmit={handleSubmit} >
+            <Form style={{ minWidth: '350px'}} {...formItemLayout} onSubmit={handleSubmit} >
 
               <Form.Item required label="Name">
                 <Input

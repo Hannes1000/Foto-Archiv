@@ -142,10 +142,10 @@ function FotoAddingPage(props) {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        onClose: () => props.history.push("/")
+        onClose: () => props.history.push("/landingPage")
     });
 
-    function handleSaveNewTag(){
+    function handleSaveNewTag() {
         const dataToSubmit = {
             name: newTagValue
         }
@@ -278,274 +278,288 @@ function FotoAddingPage(props) {
                 } = props;
                 return (
                     <div className="div-addingPage-main">
-                        <Title level={2}>Fotografie hinzufügen</Title>
-                        <ToastContainer />
-                        <Form onSubmit={handleSubmit} className="form-fotoAddingPage" >
+                        <div className="div-fotoAddingPage-Background">
+                            <Title style={{color:"white"}} level={2}>Fotografie hinzufügen</Title>
+                            <ToastContainer />
+                            <Form onSubmit={handleSubmit} className="form-fotoAddingPage" >
 
-                            <label className="label-fotoAddingPage-titel">Original Fotografie hochladen:</label>
-                            <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateOriginalImage}></FileUpload>
+                                <label className="label-fotoAddingPage-titel">Original Fotografie hochladen:</label>
+                                <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateOriginalImage}></FileUpload>
 
-                            <label className="label-fotoAddingPage-titel">Komprimiertes Bild hochladen (*.jpg oder *.png):</label>
-                            <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateCompressedImage}></FileUpload>
+                                <label className="label-fotoAddingPage-titel">Komprimiertes Bild hochladen (*.jpg oder *.png):</label>
+                                <FileUpload className="fileUpload-fotoAddingPage" refreshFunction={updateCompressedImage}></FileUpload>
 
-                            <Form.Item>
-                                <label className="label-fotoAddingPage-titel">Bildmaterial:</label>
+                                <Form.Item>
+                                    <label className="label-fotoAddingPage-titel">Bildmaterial:</label>
 
-                                <Select
-                                    onChange={handleImageMaterial}
-                                    defaultValue={imageMaterialValue}
-                                >
-                                    <Select.Option
-                                        value="negativ"
-                                    >Negativ</Select.Option>
-                                    <Select.Option
-                                        value="negativ-glas"
-                                    >Negativ-Glas</Select.Option>
-                                    <Select.Option
-                                        value="dia"
-                                    >Dia</Select.Option>
-                                    <Select.Option
-                                        value="fotografie"
-                                    >Fotografie</Select.Option>
-                                    <Select.Option
-                                        value="ansichtskarte"
-                                    >Ansichtskarte</Select.Option>
-                                    <Select.Option
-                                        value="digital"
-                                    >Digital</Select.Option>
-                                    <Select.Option
-                                        value="scan"
-                                    >Scan</Select.Option>
-                                </Select>
-                            </Form.Item>
+                                    <Select
+                                        onChange={handleImageMaterial}
+                                        defaultValue={imageMaterialValue}
+                                    >
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="negativ"
+                                        >Negativ</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="negativ-glas"
+                                        >Negativ-Glas</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="dia"
+                                        >Dia</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="fotografie"
+                                        >Fotografie</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="ansichtskarte"
+                                        >Ansichtskarte</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="digital"
+                                        >Digital</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="scan"
+                                        >Scan</Select.Option>
+                                    </Select>
+                                </Form.Item>
 
-                            <Form.Item required className="form-item-fotoAddingPage-authorInput">
-                                <div className="form-item-fotoAddingPage-divmain">
-                                    <div className="form-item-fotoAddingPage-div1">
-                                        <label className="label-fotoAddingPage-titel">Urheber:</label>
+                                <Form.Item required className="form-item-fotoAddingPage-authorInput">
+                                    <div className="form-item-fotoAddingPage-divmain">
+                                        <div className="form-item-fotoAddingPage-div1">
+                                            <label className="label-fotoAddingPage-titel">Urheber:</label>
+                                        </div>
+                                        <div className="form-item-fotoAddingPage-div2">
+                                            <label className="label-fotoAddingPage-titel">Urheber ist Besitzer:</label>
+                                            <Switch
+                                                value={copyrightSourceIsAuthor}
+                                                onChange={handleChangeCopyrightSourceIsAuthor}
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="form-item-fotoAddingPage-div2">
-                                        <label className="label-fotoAddingPage-titel">Urheber ist Besitzer:</label>
-                                        <Switch
-                                            value={copyrightSourceIsAuthor}
-                                            onChange={handleChangeCopyrightSourceIsAuthor}
+                                    <Input
+                                        id="copyrightSource"
+                                        prefix={<CopyrightOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        placeholder="Urheber der Fotografie"
+                                        type="text"
+                                        value={copyrightSourceValue}
+                                        onChange={handleChangeCopyrightSource}
+                                        onBlur={handleBlur}
+                                        className={
+                                            errors.copyrightSource && touched.copyrightSource ? 'text-input error' : 'text-input'
+                                        }
+                                    />
+                                    {errors.copyrightSource && touched.copyrightSource && (
+                                        <div className="input-feedback">{errors.copyrightSource}</div>
+                                    )}
+                                </Form.Item>
+
+                                <Form.Item required >
+                                    <label className="label-fotoAddingPage-titel">Besitzer:</label>
+                                    <Input
+                                        id="author"
+                                        disabled={copyrightSourceIsAuthor}
+                                        prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        placeholder="Besitzer der Fotografie (kann gleich sein wie Urheber)"
+                                        type="text"
+                                        value={authorValue}
+                                        onChange={handleChangeAuthor}
+                                        onBlur={handleBlur}
+                                        className={
+                                            errors.author && touched.author ? 'text-input error' : 'text-input'
+                                        }
+                                    />
+                                    {errors.author && touched.author && (
+                                        <div className="input-feedback">{errors.author}</div>
+                                    )}
+                                </Form.Item>
+
+                                <Form.Item required>
+                                    <label className="label-fotoAddingPage-titel">Titel:</label>
+                                    <Input
+                                        id="title"
+                                        prefix={<EditOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        placeholder="Titel der Fotografie"
+                                        type="text"
+                                        value={values.title}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        maxLength={255}
+                                        className={
+                                            errors.title && touched.title ? 'text-input error' : 'text-input'
+                                        }
+                                    />
+                                    {errors.title && touched.title && (
+                                        <div className="input-feedback">{errors.title}</div>
+                                    )}
+                                </Form.Item>
+
+                                <Form.Item>
+                                    <label className="label-fotoAddingPage-titel">Bild Beschreibung:</label>
+                                    <Input.TextArea
+                                        id="description"
+                                        placeholder="Beschreibung der Fotografie"
+                                        type="text"
+                                        value={values.description}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={
+                                            errors.description && touched.description ? 'text-input error' : 'text-input'
+                                        }
+                                        rows={6}
+                                        maxLength={5000}
+                                    />
+                                    {errors.description && touched.description && (
+                                        <div className="input-feedback">{errors.description}</div>
+                                    )}
+                                </Form.Item>
+
+                                <Form.Item>
+                                    <label className="label-fotoAddingPage-titel">Haupt Zuordnung:</label>
+
+                                    <Select
+                                        onChange={handleChangeMainTag}
+                                        defaultValue={mainTagValue}
+                                    >
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="building"
+                                        >Gebäude</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="object"
+                                        >Gegenstand</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="human"
+                                        >Mensch</Select.Option>
+                                        <Select.Option
+                                            className="option-fotoAddingPage"
+                                            value="location"
+                                        >Ortschaft</Select.Option>
+                                    </Select>
+                                </Form.Item>
+
+                                <Form.Item>
+                                    <label className="label-fotoAddingPage-titel">Kategorie Zuordnung:</label>
+                                    <ReactTags
+                                        className="reactTages-fotoaddingPage-tags"
+                                        tags={tags}
+                                        suggestions={suggestions}
+                                        handleDelete={handleDeleteTags}
+                                        handleAddition={handleAdditionTags}
+                                        handleDrag={handleDragTags}
+                                        delimiters={delimiters}
+                                        autofocus={false}
+                                        minQueryLength={0}
+                                        // minQueryLength={suggestions.length > 20 ? 2 : suggestions.length > 10 ? 1 : 0}
+                                        inline={false}
+                                        allowDeleteFromEmptyInput={false}
+                                        placeholder={"Kategorie auswählen"}
+                                    />
+                                    <label className="label-fotoAddingPage-titel">Neue Kategorie Hinzufügen:</label>
+                                    <Input
+                                        id="tagadd"
+                                        prefix={<PlusOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        placeholder="Kategorie hinzufügen"
+                                        type="text"
+                                        value={newTagValue}
+                                        onChange={handleChangeAddTag}
+                                        onBlur={handleBlur}
+                                        maxLength={255}
+                                    />
+                                    <Button type="primary" className="" onClick={() => handleSaveNewTag()}>
+                                        Kategorie hinzufügen
+                                </Button>
+                                </Form.Item>
+
+                                <Form.Item className="form-item-fotoAddingPage-creationDate">
+                                    <label className="label-fotoAddingPage-titel">Erstell Datum der Fotografie:</label>
+                                    <div>
+                                        <DatePicker
+                                            onChange={handleChangeCreationDate}
+                                            className="datePicker-fotoAddingPage"
+                                            value={moment(creationDateValue, 'YYYY-MM-DD')}
                                         />
                                     </div>
-                                </div>
-                                <Input
-                                    id="copyrightSource"
-                                    prefix={<CopyrightOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Urheber der Fotografie"
-                                    type="text"
-                                    value={copyrightSourceValue}
-                                    onChange={handleChangeCopyrightSource}
-                                    onBlur={handleBlur}
-                                    className={
-                                        errors.copyrightSource && touched.copyrightSource ? 'text-input error' : 'text-input'
-                                    }
-                                />
-                                {errors.copyrightSource && touched.copyrightSource && (
-                                    <div className="input-feedback">{errors.copyrightSource}</div>
-                                )}
-                            </Form.Item>
+                                </Form.Item>
 
-                            <Form.Item required >
-                                <label className="label-fotoAddingPage-titel">Besitzer:</label>
-                                <Input
-                                    id="author"
-                                    disabled={copyrightSourceIsAuthor}
-                                    prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Besitzer der Fotografie (kann gleich sein wie Urheber)"
-                                    type="text"
-                                    value={authorValue}
-                                    onChange={handleChangeAuthor}
-                                    onBlur={handleBlur}
-                                    className={
-                                        errors.author && touched.author ? 'text-input error' : 'text-input'
-                                    }
-                                />
-                                {errors.author && touched.author && (
-                                    <div className="input-feedback">{errors.author}</div>
-                                )}
-                            </Form.Item>
-
-                            <Form.Item required>
-                                <label className="label-fotoAddingPage-titel">Titel:</label>
-                                <Input
-                                    id="title"
-                                    prefix={<EditOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Titel der Fotografie"
-                                    type="text"
-                                    value={values.title}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    maxLength={255}
-                                    className={
-                                        errors.title && touched.title ? 'text-input error' : 'text-input'
-                                    }
-                                />
-                                {errors.title && touched.title && (
-                                    <div className="input-feedback">{errors.title}</div>
-                                )}
-                            </Form.Item>
-
-                            <Form.Item>
-                                <label className="label-fotoAddingPage-titel">Bild Beschreibung:</label>
-                                <Input.TextArea
-                                    id="description"
-                                    placeholder="Beschreibung der Fotografie"
-                                    type="text"
-                                    value={values.description}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={
-                                        errors.description && touched.description ? 'text-input error' : 'text-input'
-                                    }
-                                    rows={6}
-                                    maxLength={5000}
-                                />
-                                {errors.description && touched.description && (
-                                    <div className="input-feedback">{errors.description}</div>
-                                )}
-                            </Form.Item>
-
-                            <Form.Item>
-                                <label className="label-fotoAddingPage-titel">Haupt Zuordnung:</label>
-
-                                <Select
-                                    onChange={handleChangeMainTag}
-                                    defaultValue={mainTagValue}
-                                >
-                                    <Select.Option
-                                        value="building"
-                                    >Gebäude</Select.Option>
-                                    <Select.Option
-                                        value="object"
-                                    >Gegenstand</Select.Option>
-                                    <Select.Option
-                                        value="human"
-                                    >Mensch</Select.Option>
-                                    <Select.Option
-                                        value="location"
-                                    >Ortschaft</Select.Option>
-                                </Select>
-                            </Form.Item>
-
-                            <Form.Item>
-                                <label className="label-fotoAddingPage-titel">Kategorie Zuordnung:</label>
-                                <ReactTags
-                                    tags={tags}
-                                    suggestions={suggestions}
-                                    handleDelete={handleDeleteTags}
-                                    handleAddition={handleAdditionTags}
-                                    handleDrag={handleDragTags}
-                                    delimiters={delimiters}
-                                    autofocus={false}
-                                    minQueryLength={0}
-                                    // minQueryLength={suggestions.length > 20 ? 2 : suggestions.length > 10 ? 1 : 0}
-                                    inline={false}
-                                    allowDeleteFromEmptyInput={false}
-                                    placeholder={"Kategorie auswählen"}
-                                />
-                                <label className="label-fotoAddingPage-titel">Neue Kategorie Hinzufügen:</label>
-                                <Input
-                                    id="tagadd"
-                                    prefix={<PlusOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Kategorie hinzufügen"
-                                    type="text"
-                                    value={newTagValue}
-                                    onChange={handleChangeAddTag}
-                                    onBlur={handleBlur}
-                                    maxLength={255}
-                                />
-                                <Button type="primary" className="" onClick={()=>handleSaveNewTag()}>
-                                    Kategorie hinzufügen
-                                </Button>
-                            </Form.Item>
-
-                            <Form.Item className="form-item-fotoAddingPage-creationDate">
-                                <label className="label-fotoAddingPage-titel">Erstell Datum der Fotografie:</label>
-                                <div>
-                                    <DatePicker
-                                        onChange={handleChangeCreationDate}
-                                        className="datePicker-fotoAddingPage"
-                                        value={moment(creationDateValue, 'YYYY-MM-DD')}
+                                <Form.Item>
+                                    <label className="label-fotoAddingPage-titel">GPS Location:</label>
+                                    <Input
+                                        id="gpsLocation"
+                                        prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        placeholder="Beschreibung der Fotografie"
+                                        type="text"
+                                        value={values.gpsLocation}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={
+                                            errors.gpsLocation && touched.gpsLocation ? 'text-input error' : 'text-input'
+                                        }
+                                        rows={6}
+                                        maxLength={5000}
                                     />
-                                </div>
-                            </Form.Item>
+                                    {errors.gpsLocation && touched.gpsLocation && (
+                                        <div className="input-feedback">{errors.gpsLocation}</div>
+                                    )}
+                                </Form.Item>
 
-                            <Form.Item>
-                                <label className="label-fotoAddingPage-titel">GPS Location:</label>
-                                <Input
-                                    id="gpsLocation"
-                                    prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Beschreibung der Fotografie"
-                                    type="text"
-                                    value={values.gpsLocation}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={
-                                        errors.gpsLocation && touched.gpsLocation ? 'text-input error' : 'text-input'
-                                    }
-                                    rows={6}
-                                    maxLength={5000}
-                                />
-                                {errors.gpsLocation && touched.gpsLocation && (
-                                    <div className="input-feedback">{errors.gpsLocation}</div>
-                                )}
-                            </Form.Item>
+                                <Form.Item>
+                                    <label className="label-fotoAddingPage-titel">Stadt/Dorf:</label>
+                                    <Input
+                                        id="city"
+                                        prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        placeholder="Beschreibung der Fotografie"
+                                        type="text"
+                                        value={values.city}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={
+                                            errors.city && touched.city ? 'text-input error' : 'text-input'
+                                        }
+                                        rows={6}
+                                        maxLength={5000}
+                                    />
+                                    {errors.city && touched.city && (
+                                        <div className="input-feedback">{errors.city}</div>
+                                    )}
+                                </Form.Item>
 
-                            <Form.Item>
-                                <label className="label-fotoAddingPage-titel">Stadt/Dorf:</label>
-                                <Input
-                                    id="city"
-                                    prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Beschreibung der Fotografie"
-                                    type="text"
-                                    value={values.city}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={
-                                        errors.city && touched.city ? 'text-input error' : 'text-input'
-                                    }
-                                    rows={6}
-                                    maxLength={5000}
-                                />
-                                {errors.city && touched.city && (
-                                    <div className="input-feedback">{errors.city}</div>
-                                )}
-                            </Form.Item>
+                                <Form.Item>
+                                    <label className="label-fotoAddingPage-titel">Land:</label>
+                                    <Input
+                                        id="country"
+                                        prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        placeholder="Beschreibung der Fotografie"
+                                        type="text"
+                                        value={values.country}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={
+                                            errors.country && touched.country ? 'text-input error' : 'text-input'
+                                        }
+                                        rows={6}
+                                        maxLength={5000}
+                                    />
+                                    {errors.country && touched.country && (
+                                        <div className="input-feedback">{errors.country}</div>
+                                    )}
+                                </Form.Item>
 
-                            <Form.Item>
-                                <label className="label-fotoAddingPage-titel">Land:</label>
-                                <Input
-                                    id="country"
-                                    prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Beschreibung der Fotografie"
-                                    type="text"
-                                    value={values.country}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    className={
-                                        errors.country && touched.country ? 'text-input error' : 'text-input'
-                                    }
-                                    rows={6}
-                                    maxLength={5000}
-                                />
-                                {errors.country && touched.country && (
-                                    <div className="input-feedback">{errors.country}</div>
-                                )}
-                            </Form.Item>
-
-                            <Form.Item>
-                                <div>
-                                    <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
-                                        Fotografie Speichern
+                                <Form.Item>
+                                    <div>
+                                        <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
+                                            Fotografie Speichern
                                     </Button>
-                                </div>
-                            </Form.Item>
+                                    </div>
+                                </Form.Item>
 
-                        </Form>
+                            </Form>
+                        </div>
                     </div>
                 );
             }}

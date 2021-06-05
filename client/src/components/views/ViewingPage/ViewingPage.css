@@ -32,19 +32,19 @@
 
 .image-gallery{
     width: 90vw;
-    background-color: #01a4a444;
+    background-color: #00000091;
     z-index: 1;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
     overflow: hidden;
-    border: 2px solid #40A9FF;
+    border: 1px solid #000000;
     -webkit-box-shadow: 8px 12px 32px 5px #000000; 
     box-shadow: 8px 12px 32px 5px #000000;
 }
 
 .title-viewingPage-title{
-    color: #c8d6e5 !important;
+    color: #ffffff !important;
     z-index: 2;
 }
 
@@ -54,19 +54,19 @@
 }
 
 .label-viewingpage-display{
-    color: #539eee !important;
+    color: #f3f3f3 !important;
     z-index: 2;
 }
 
 .div-viewingPage-description{
-    background-color: #01a4a444;
+    background-color: #00000091;
     z-index: 1;
     word-wrap: break-word;
     margin-top: 20px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
-    border: 2px solid #40A9FF;
+    border: 1px solid #000000;
     -webkit-box-shadow: 8px 12px 32px 5px #000000; 
     box-shadow: 8px 12px 32px 5px #000000;
 }
@@ -86,6 +86,15 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.div-viewingPage-line{
+    background-color: #04958b9a;
+    width: 97%;
+    height: 8px;
+    border-radius: 0px 10px 10px 0px;
+    margin-bottom: 25px;
+    border: 1px solid #1E252E;
 }
 
 @media only screen and (max-width: 570px) {
