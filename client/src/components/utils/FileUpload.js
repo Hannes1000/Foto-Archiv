@@ -36,6 +36,18 @@ function FileUpload(props) {
         newImages.splice(currentIndex, 1)
         setImages(newImages);
         props.refreshFunction(newImages);
+        const dataToSubmit ={
+            image: image
+        }
+        Axios.post("/api/fotos/deleteImage", dataToSubmit)
+            .then(response => {
+                if (response.data.success) {
+                    //console.log(response.data.image)
+                    //console.log("deleted")
+                } else {
+                    //alert("Failed to delete the Image")
+                }
+            })
     }
 
     useEffect(() => {

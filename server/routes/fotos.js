@@ -4,6 +4,7 @@ var config = require('../config/databaseConfig.js');
 const { auth } = require("../middleware/auth");
 const multer = require("multer");
 var connection = config.connection;
+const fs = require('fs');
 
 
 var storage = multer.diskStorage({
@@ -33,6 +34,18 @@ router.post("/uploadImage", auth, (req, res) => {
         //return res.json({success: true, image: res.req.file.path, fileName: res.req.file.filename})
         return res.json({ success: true, image: "uploads/" + res.req.file.filename, fileName: res.req.file.filename })
     })
+});
+
+router.post("/deleteImage", auth, (req, res) => {
+    console.log(req.body.image)
+    try {
+        fs.unlinkSync("./" + req.body.image);
+        //file removed
+    } catch (err) {
+        //console.error(err)
+        return res.json({ success: false, error: err })
+    }
+    return res.json({ success: true })
 });
 
 router.post("/uploadFoto", auth, (req, res) => {
@@ -305,7 +318,7 @@ router.post("/searchFotos", auth, (req, res) => {
 router.post("/addTag", auth, (req, res) => {
 
     var sql = "insert into fotoarchiv.tags (name) values (?);" +
-    "select LAST_INSERT_ID() as _id";
+        "select LAST_INSERT_ID() as _id";
     values = [
         req.body.name
     ];
@@ -367,9 +380,9 @@ router.post("/updatePicture", auth, (req, res) => {
     const imageMaterial = req.body.imageMaterial
     const tags = req.body.tags
 
-    var sql = "UPDATE fotoarchiv.fotos f, fotoarchiv.locations l "+
-    "set f.originalImage = ?, f.compressedImage = ?, f.copyrightSource = ?, f.author = ?, f.mainTag = ?, f.description = ?, f.creationDate = ?, f.title = ?, f.imageMaterial = ?, l.gpsLocation = ?, l.country = ?, l.city = ? "+
-    "where f._id = ? AND l._fotosid = ?;"
+    var sql = "UPDATE fotoarchiv.fotos f, fotoarchiv.locations l " +
+        "set f.originalImage = ?, f.compressedImage = ?, f.copyrightSource = ?, f.author = ?, f.mainTag = ?, f.description = ?, f.creationDate = ?, f.title = ?, f.imageMaterial = ?, l.gpsLocation = ?, l.country = ?, l.city = ? " +
+        "where f._id = ? AND l._fotosid = ?;"
     values = [
         originalImage,
         compressedImage,

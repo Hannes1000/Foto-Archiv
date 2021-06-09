@@ -194,6 +194,12 @@
   background-color: #222f3e !important; 
 }
 
+.menue__logo_logo{
+  position: relative;
+  top: -55px;
+  left: -16px;
+}
+
 @media (max-width: 767px) {
   .menu__mobile-button {
     display: inline-block !important;

@@ -1,3 +1,4 @@
+
 #div-addingPage{
     padding: 10px;
     display: flex;
@@ -73,13 +74,15 @@
     flex-direction: column;
 }
 
-.ant-input{
+/* .ant-input{
     background-color: #00000091;
+    border-color: rgb(0, 0, 0) !important;
 }
 
 .ant-select-selection{
     background-color: #00000091 !important;
     color: #ffffffc2;
+    border-color: rgb(0, 0, 0) !important;
 }
 
 .ant-select-selection{
@@ -97,10 +100,6 @@
     color: #ffffffc2;
 }
 
-.reactTages-fotoaddingPage-tags{
-    background-color: #00000088 !important;
-    color: #ffffffc2;   
-}
 
 .div.ReactTags__tagInput{
     background-color: #00000088 !important;
@@ -111,3 +110,16 @@
     background-color: #00000088 !important;
     color: #ffffffc2;  
 }
+
+div.ReactTags__tagInput input.ReactTags__tagInputField, div.ReactTags__tagInput input.ReactTags__tagInputField:focus{
+    background-color: #00000091;
+}
+
+.ant-calendar-picker-input.ant-input{
+    color: #ffffffc2;  
+}
+
+.ant-calendar-picker-input.ant-input *{
+    color: #ffffffc2;  
+    background-color: #00000091;
+} */

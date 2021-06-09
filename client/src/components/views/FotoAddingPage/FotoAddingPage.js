@@ -463,7 +463,7 @@ function FotoAddingPage(props) {
                                     <label className="label-fotoAddingPage-titel">Neue Kategorie Hinzufügen:</label>
                                     <Input
                                         id="tagadd"
-                                        prefix={<PlusOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                        prefix={<PlusOutlined style={{ color: '#000 !important' }} />}
                                         placeholder="Kategorie hinzufügen"
                                         type="text"
                                         value={newTagValue}
@@ -533,6 +533,7 @@ function FotoAddingPage(props) {
                                     <label className="label-fotoAddingPage-titel">Land:</label>
                                     <Input
                                         id="country"
+                                        style={{color:"blue"}}
                                         prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         placeholder="Beschreibung der Fotografie"
                                         type="text"

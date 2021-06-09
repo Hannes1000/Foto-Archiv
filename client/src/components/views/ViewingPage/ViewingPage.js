@@ -46,7 +46,8 @@ function ViewingPage(props) {
     setcityValue(props.location.params[props.location.indexValue].city);
     setcopyrightSourceValue(props.location.params[props.location.indexValue].copyrightSource);
     setcoutnryValue(props.location.params[props.location.indexValue].country);
-    setcreationDateValue(props.location.params[props.location.indexValue].creationDate);
+    var d = new Date(props.location.params[props.location.indexValue].creationDate);
+    setcreationDateValue(d.toDateString());
     setauthorValue(props.location.params[props.location.indexValue].author);
   }, []);
 
@@ -56,7 +57,8 @@ function ViewingPage(props) {
     setcityValue(fotoData[index].city);
     setcopyrightSourceValue(fotoData[index].copyrightSource);
     setcoutnryValue(fotoData[index].country);
-    setcreationDateValue(fotoData[index].creationDate);
+    var d = new Date(fotoData[index].creationDate);
+    setcreationDateValue(d.toDateString());
     setauthorValue(fotoData[index].author);
   }
 
