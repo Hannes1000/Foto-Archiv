@@ -1,7 +1,7 @@
 .div-landingPage-main{
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("../../ressources/background.png");
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("../../ressources/background.png"); */
     background-attachment: fixed;
 	background-size:cover;
 }

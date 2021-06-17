@@ -283,7 +283,7 @@ function FotoAddingPage(props) {
                 return (
                     <div className="div-addingPage-main">
                         <div className="div-fotoAddingPage-Background">
-                            <Title level={2}>Fotografie bearbeiten</Title>
+                            <Title style={{color:"white"}} level={2}>Fotografie bearbeiten</Title>
                             <ToastContainer />
                             <Form onSubmit={handleSubmit} className="form-fotoAddingPage" >
 
