@@ -16,6 +16,8 @@
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #card-fotodisplay{
