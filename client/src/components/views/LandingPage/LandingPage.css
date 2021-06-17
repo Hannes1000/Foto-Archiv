@@ -14,10 +14,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-line-clamp: 5; /* number of lines to show */
     -webkit-box-orient: vertical;
     padding-left: 10px;
     padding-right: 10px;
+    height: 60px;
+    background-color: rgba(51, 51, 51, 0.884);
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #card-fotodisplay{
@@ -95,7 +100,7 @@
 
 
 .card-text{
-    color: white;
+    color: rgb(173, 172, 172);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -129,7 +134,6 @@ div.card-row.row{
 }
 
 .collapsible-landingPage{
-    
 }
 
 .div-collapsible-landingPage{

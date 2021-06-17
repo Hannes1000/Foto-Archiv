@@ -207,13 +207,13 @@ function LandingPage(props) {
                     >
                         <CardBody className="cardBody-landingPage">
                             <div className="div-landingPage-titlebutton">
-                                <CardTitle tag="h5" className="card-text">{foto.title}</CardTitle>
+                                <CardTitle tag="h5" className="card-text card-text-admin">{foto.title}</CardTitle>
                             </div>
                         </CardBody>
                         <div id="card-img-div">
                             <CardImg id="card-img" src={"https://"+USER_IP+":5000/" + foto.compressedImage} alt="Card image cap" />
                         </div>
-                        <div className="card-description card-text">
+                        <div className="card-description-text card-description card-text">
                             {foto.description}
                         </div>
                     </Link>

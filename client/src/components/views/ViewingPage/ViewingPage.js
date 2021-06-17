@@ -84,7 +84,7 @@ function ViewingPage(props) {
 
           <div className="div-viewingPage-description">
             <label className="input-viewingPage-all title-viewinpage-smaller">Beschreibung</label>
-            <label className="input-viewingPage-all label-viewingpage-display">
+            <label style={{whiteSpace:"pre-wrap"}} className="input-viewingPage-all label-viewingpage-display">
               {descriptionValue}
             </label>
             <div className="div-viewingPage-line"></div>

@@ -193,7 +193,7 @@ function LandingPage(props) {
                         <div id="card-img-div">
                             <CardImg id="card-img" src={"https://"+USER_IP+":5000/" + foto.compressedImage} alt="Card image cap" />
                         </div>
-                        <div className="card-description card-text">
+                        <div style={{color:"rgb(219, 219, 219)"}} className="card-description card-text">
                             {foto.description}
                         </div>
                     </Card>
