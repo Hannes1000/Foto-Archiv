@@ -21,8 +21,8 @@ const { Title } = Typography;
 function FotoAddingPage(props) {
     const [originalImage, setOriginalImage] = useState([]);
     const [compressedImage, setCompressedImage] = useState([]);
-    const [mainTagValue, setMainTagValue] = useState('building');
-    const [imageMaterialValue, setImageMaterialValue] = useState('negativ');
+    const [mainTagValue, setMainTagValue] = useState('human');
+    const [imageMaterialValue, setImageMaterialValue] = useState('fotografie');
     const [creationDateValue, setCreationDateValue] = useState(moment());
     const [authorValue, setAuthorValue] = useState("");
     const [copyrightSourceValue, setCopyrightSourceValue] = useState("");
@@ -188,7 +188,7 @@ function FotoAddingPage(props) {
     }, []);
 
     function autoFill(){
-       setCreationDateValue("1914-10-11");
+       setCreationDateValue("1930-05-29");
         setAuthorValue("Hofer Franz");
         setCopyrightSourceValue("Niederkofler Johann");
     }
@@ -197,9 +197,9 @@ function FotoAddingPage(props) {
     return (
         <Formik
             initialValues={{
-                title: 'Soldat Erster Weltkrieg',
-                description: '',
-                gpsLocation: '47.013811417759605, 12.030572808903747',
+                title: 'Primiz in St Johann',
+                description: 'Alle warteten ungeduldig darauf, dass die Prozession anlässlich der Primiz von Gottfried Gruber endlich losging.',
+                gpsLocation: '46.97995702530285, 11.939850793237095',
                 city: 'St. Johann',
                 country: 'Südtirol'
             }}

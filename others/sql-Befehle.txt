@@ -1,0 +1,73 @@
+CREATE TABLE `fotoarchiv`.`users` (
+  `_id` INT NOT NULL AUTO_INCREMENT,
+  `role` INT NOT NULL,
+  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `image` VARCHAR(400) NOT NULL,
+  `token` VARCHAR(255) NOT NULL,
+  `tokenExp` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`_id`));
+
+
+CREATE TABLE `fotoarchiv`.`fotos` (
+  `_id` INT NOT NULL AUTO_INCREMENT,
+  `_usersid` INT NOT NULL,
+  `originalImage` VARCHAR(300) NOT NULL,
+  `compressedImage` VARCHAR(300) NOT NULL,
+  `copyrightSource` VARCHAR(255) NOT NULL,
+  `author` VARCHAR(255) NOT NULL,
+  `mainTag` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(5000) NULL,
+  `uploadDate` DATE NOT NULL,
+  `creationDate` VARCHAR(50) NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `imageMaterial` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`_id`),
+  UNIQUE INDEX `originalImage_UNIQUE` (`originalImage` ASC) VISIBLE,
+  UNIQUE INDEX `compressedImage_UNIQUE` (`compressedImage` ASC) VISIBLE,
+  INDEX `_usersid_idx` (`_usersid` ASC) VISIBLE,
+  CONSTRAINT `_usersid`
+    FOREIGN KEY (`_usersid`)
+    REFERENCES `fotoarchiv`.`users` (`_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+CREATE TABLE `fotoarchiv`.`locations` (
+  `gpsLocation` VARCHAR(255) NOT NULL,
+  `country` VARCHAR(255) NOT NULL,
+  `city` VARCHAR(255) NOT NULL,
+  `_fotosid` INT NOT NULL,
+  PRIMARY KEY (`gpsLocation`),
+  INDEX `_fotosid_idx` (`_fotosid` ASC) VISIBLE,
+  CONSTRAINT `_fotosid`
+    FOREIGN KEY (`_fotosid`)
+    REFERENCES `fotoarchiv`.`fotos` (`_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+CREATE TABLE `fotoarchiv`.`tags` (
+  `_id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`_id`),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE);
+
+
+CREATE TABLE `fotoarchiv`.`getsdefinedby` (
+  `_fotosid` INT NOT NULL,
+  `_tagsid` INT NOT NULL,
+  PRIMARY KEY (`_fotosid`, `_tagsid`),
+  INDEX `_tagsid_idx` (`_tagsid` ASC) VISIBLE,
+  CONSTRAINT `fotosid`
+    FOREIGN KEY (`_fotosid`)
+    REFERENCES `fotoarchiv`.`fotos` (`_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `tagsid`
+    FOREIGN KEY (`_tagsid`)
+    REFERENCES `fotoarchiv`.`tags` (`_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
