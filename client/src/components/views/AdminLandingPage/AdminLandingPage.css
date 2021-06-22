@@ -228,6 +228,18 @@ div.card-row.row{
     height: 25px;
 }
 
+.card-description-text{
+    height: 50px !important;
+}
+
+.card-text-admin{
+    width: 180px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
 @media only screen and (max-width: 600px) {
 
     .Searchbar-landingPage{
