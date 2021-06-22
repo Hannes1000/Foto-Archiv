@@ -167,6 +167,7 @@ function FotoAddingPage(props) {
     }
 
     useEffect(() => {
+        autoFill();
         Axios.post("/api/fotos/allTags")
             .then(response => {
                 if (response.data.success) {
@@ -186,20 +187,27 @@ function FotoAddingPage(props) {
             })
     }, []);
 
+    function autoFill(){
+       setCreationDateValue("1914-10-11");
+        setAuthorValue("Hofer Franz");
+        setCopyrightSourceValue("Niederkofler Johann");
+    }
+
+
     return (
         <Formik
             initialValues={{
-                title: '',
+                title: 'Soldat Erster Weltkrieg',
                 description: '',
-                gpsLocation: '',
-                city: '',
-                country: ''
+                gpsLocation: '47.013811417759605, 12.030572808903747',
+                city: 'St. Johann',
+                country: 'Südtirol'
             }}
             validationSchema={Yup.object().shape({
                 title: Yup.string()
                     .required('Titel muss vorhanden sein'),
-                gpsLocation: Yup.string()
-                    .required('GPS-Location muss vorhanden sein'),
+                /*gpsLocation: Yup.string()
+                    .required('GPS-Location muss vorhanden sein'),*/
                 // author: Yup.string()
                 //     .required('Besitzer der Fotografie muss angegeben werden'),
                 // copyrightSource: Yup.string()
@@ -279,7 +287,7 @@ function FotoAddingPage(props) {
                 return (
                     <div className="div-addingPage-main">
                         <div className="div-fotoAddingPage-Background">
-                            <Title style={{color:"white"}} level={2}>Fotografie hinzufügen</Title>
+                            <Title style={{ color: "white" }} level={2}>Fotografie hinzufügen</Title>
                             <ToastContainer />
                             <Form onSubmit={handleSubmit} className="form-fotoAddingPage" >
 
@@ -473,7 +481,7 @@ function FotoAddingPage(props) {
                                     />
                                     <Button type="primary" className="" onClick={() => handleSaveNewTag()}>
                                         Kategorie hinzufügen
-                                </Button>
+                                    </Button>
                                 </Form.Item>
 
                                 <Form.Item className="form-item-fotoAddingPage-creationDate">
@@ -533,7 +541,7 @@ function FotoAddingPage(props) {
                                     <label className="label-fotoAddingPage-titel">Land:</label>
                                     <Input
                                         id="country"
-                                        style={{color:"blue"}}
+                                        style={{ color: "blue" }}
                                         prefix={<CompassOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                                         placeholder="Beschreibung der Fotografie"
                                         type="text"
@@ -555,11 +563,13 @@ function FotoAddingPage(props) {
                                     <div>
                                         <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
                                             Fotografie Speichern
-                                    </Button>
+                                        </Button>
                                     </div>
                                 </Form.Item>
 
                             </Form>
+
+                            {/* <button style={{width:"100px", height:"100px"}} onClick={()=>autoFill()} /> */}
                         </div>
                     </div>
                 );
