@@ -3,7 +3,6 @@
 
 dev.js
 
-
 /others
 
 .DS_Store
@@ -13,3 +12,4 @@ yarn-debug.kog*
 yarn-error.log*
 
 .vscode
+IPConfig.js
