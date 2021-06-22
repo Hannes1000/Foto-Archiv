@@ -23,6 +23,7 @@
 .label-fotoAddingPage-titel{
     font-weight: bold;
     font-size: 40px;
+    color: white;
 }
 
 .form-item-fotoAddingPage-creationDate * {
