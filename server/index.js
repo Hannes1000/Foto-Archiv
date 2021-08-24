@@ -52,17 +52,17 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const port = process.env.PORT || 5000
-/*
+
 app.listen(port, () => {
   console.log(`Server Running at ${port}`)
-});*/
+});
 
 /*
 var httpsServer = https.createServer(credentials, app);
 
 httpsServer.listen(port, () => {
   console.log(`Server Running at ${port}`)
-});*/
+});
 
 https.createServer({
   key: fs.readFileSync(path.join(__dirname,'server.key'), 'utf8'),
@@ -70,4 +70,4 @@ https.createServer({
 }, app)
 .listen(port, function () {
   console.log('App listening on port '+port+'! Link: https://localhost:'+port)
-})
+})*/
