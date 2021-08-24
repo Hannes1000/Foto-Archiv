@@ -15,6 +15,7 @@ import FotoEditingPage from './views/FotoEditingPage/FotoEditingPage';
 import AdminLandingPage from './views/AdminLandingPage/AdminLandingPage';
 import HomePage from './views/HomePage/HomePage';
 import AboutPage from './views/AboutPage/AboutPage';
+import TestPage from './views/TestPage/TestPage';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/fotos/edit" component={Auth(AdminLandingPage, true, true)} />
           <Route exact path="/fotos/edit/:id" component={Auth(FotoEditingPage, true, true)} />
           <Route exact path="/users/edit" component={Auth(UserManagePage, true, true)} />
+          <Route exact path="/test" component={Auth(TestPage, false)} />
         </Switch>
       </div>
       <Footer />

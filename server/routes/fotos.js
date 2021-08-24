@@ -5,17 +5,25 @@ const { auth } = require("../middleware/auth");
 const multer = require("multer");
 var connection = config.connection;
 const fs = require('fs');
-
+const Jimp = require('jimp');
+//const gm = require('gm');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "uploads")
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}_${file.originalname}`)
+        let path = "/uploads/" + file.originalname;
+        if (fs.existsSync("." + path)) {
+            cb(null, "(0)" + file.originalname)
+        } else {
+            cb(null, file.originalname)
+        }
+        // cb(null, `${Date.now()}_${file.originalname}`)
     },
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname)
+        //console.log(ext)
         if (ext !== '.jpg' || ext !== '.png' || ext !== '.tif') {
             return cb(res.status(400).end('only jpg, png, tif are allowed'), false);
         }
@@ -26,18 +34,66 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }).single("file")
 
 router.post("/uploadImage", auth, (req, res) => {
-    //after getting imgage from client save it
     upload(req, res, err => {
         // console.log(res.req.file.path)
         // console.log("uploads/"+res.req.file.filename)
-        if (err) return res.json({ success: false, err })
-        //return res.json({success: true, image: res.req.file.path, fileName: res.req.file.filename})
-        return res.json({ success: true, image: "uploads/" + res.req.file.filename, fileName: res.req.file.filename })
+        if (err)
+            return res.json({ success: false, error: err })
+        else {
+            //console.log("uploads/" + res.req.file.filename);
+            var imagepath = "uploads/" + res.req.file.filename;
+            //console.log("old image " + imagepath)
+            //console.log("new image " + imagepath.split(".")[0]+".jpg")
+
+            Jimp.read(imagepath, (err, image) => {
+                if (err)
+                    return res.json({ success: false, error: err })
+
+                let message = 'Franz Foto Archiv'
+                let x = 20
+                let y = 2500
+
+                Jimp.loadFont(Jimp.FONT_SANS_128_BLACK)
+                    .then(font => {
+                        image
+                            .print(font, x, y, message)
+                            .quality(100) // set JPEG quality
+                            .resize(1920, Jimp.AUTO) // resize
+                            //.greyscale() // set greyscale
+                            //.resize(Jimp.AUTO, 2000) // resize
+                            .write(imagepath.split(".")[0] + ".jpg"); // save
+
+                    })
+            });
+
+            Jimp.read(imagepath, (err, image) => {
+                if (err)
+                    return res.json({ success: false, error: err })
+
+                image
+                    .resize(Jimp.AUTO, 250) // resize
+                    .quality(100) // set JPEG quality
+                    //.greyscale() // set greyscale
+                    .write(imagepath.split(".")[0] + "_small.jpg"); // save
+            });
+
+            return res.json({ success: true, image: "uploads/" + res.req.file.filename, fileName: res.req.file.filename, imageWatermark: imagepath.split(".")[0] + ".jpg", imageSmall: imagepath.split(".")[0] + "_small.jpg" })
+        }
     })
 });
 
+router.post("/checkImagePath", auth, (req, res) => {
+    let path = "uploads/" + req.body.imagename;
+    if (fs.existsSync("./" + path)) {
+        return res.json({ success: false, error: "Bild bereits vorhanden!", path: path })
+    } else {
+        return res.json({ success: true })
+    }
+});
+
 router.post("/deleteImage", auth, (req, res) => {
-    console.log(req.body.image)
+    //console.log(req.body)
+    //console.log(req.body.image)
     try {
         fs.unlinkSync("./" + req.body.image);
         //file removed
@@ -45,6 +101,16 @@ router.post("/deleteImage", auth, (req, res) => {
         //console.error(err)
         return res.json({ success: false, error: err })
     }
+    return res.json({ success: true })
+});
+
+router.post("/renameImage", auth, (req, res) => {
+    // console.log(req.body.image)
+    // console.log(req.body.newname)
+    fs.rename("./" + req.body.image, "./" + req.body.newname, (err) => {
+        if (err)
+            return res.json({ success: false, error: err })
+    })
     return res.json({ success: true })
 });
 

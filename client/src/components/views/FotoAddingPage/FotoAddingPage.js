@@ -198,7 +198,7 @@ function FotoAddingPage(props) {
         <Formik
             initialValues={{
                 title: 'Primiz in St Johann',
-                description: 'Alle warteten ungeduldig darauf, dass die Prozession anlässlich der Primiz von Gottfried Gruber endlich losging.',
+                description: 'Man sieht eine Reitergruppe der Schützen bei der Prozession, die anlässlich der Primiz von Gottfried Gruber "Niederlechn" stattfand.',
                 gpsLocation: '46.97995702530285, 11.939850793237095',
                 city: 'St. Johann',
                 country: 'Südtirol'

@@ -1,0 +1,213 @@
+.div-newfileupload-container{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 10px 10px 10px 10px;
+    overflow: hidden;
+}
+
+.div-newfileUpload-displayPicture{
+    width: auto;
+    background-color: #41414191;
+}
+
+.div-fileupload-bottomdisplay-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.div-fileupload-namedisplay{
+    width: 80%;
+    height: 50px;
+    background-color: #414141f1;
+    border-top: 3px solid black;
+}
+ 
+.dropzone-newFileupload{
+    background-color: white;
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    cursor:pointer;
+    display: block;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    right: 0px;
+    width: 20%;
+}
+
+.div-newfileupload-displayImage{
+    width: auto;
+    display: flex;
+    min-height: 460px;
+    overflow: scroll;
+    overflow-y: hidden;
+    background-color: #41414191;
+    z-index: 2;
+    flex-direction: column;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.div-newfileupload-displayImage > div{
+}
+
+.div-newfilupload-displayImage-childs{
+}
+
+.img-newfileupload-images{
+    height: 380px;
+    max-width: 480px;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-newfileupload-decideimg{
+    height: 150px;
+    max-width: 200px;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-newfileupload-decideimg{
+    background-color: blue;
+    height: 150px;
+    max-width: 200px;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dropzone-newfileupload-dropzone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-newfileupload-imagecontainer{
+    background-color: #000000a6;
+    min-width: 500px;
+    max-width: 500px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 3px 3px 0px 0px;
+}
+
+.div-newFileUpload-imagesrow{
+    display: flex;
+    flex-direction: row;
+}
+
+.collabsible-newfileupload{
+}
+
+.button-uploadingpage-collapsible{
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.p-uploadingpage-collappsiblebutton{
+    margin-top: 3px;
+    padding-right: 10px;
+    font-size: 15px;
+}
+
+.button-uploadpage-deleteimage{
+  background-color: rgb(182, 10, 33);
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  position: absolute;
+  top: 0px;
+  left: 100px;
+}
+
+.button-uploadpage-deleteimage:hover{
+    border: 1px solid rgb(255, 0, 119);
+}
+
+.div-buttonuploadpage-deletimage{
+    position: relative;
+    top: 145px;
+    left: 350px;
+}
+
+
+.loading-newfileupload-loadingdisplay{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.div-newfileupload-decidedisplay{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.p-newfileupload-decidedisplay{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+}
+
+.div-newfileupload-blockbottomdecide{
+    height: 190px;
+    width: 480px;
+    display: flex;
+    flex-direction: row;
+}
+
+.div-newfileupload-blocktopdecide{
+    height: 190px;
+    width: 480px;
+    display: flex;
+    flex-direction: row;
+}
+
+.div-newfileupload-blockdecide1{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 190px;
+    width: 240px;
+}
+
+.div-newfileupload-blockdecide2{
+    border-bottom: 1px solid black;
+    height: 190px;
+    width: 240px;
+}
+
+.div-newfileupload-blockdecide3{
+    border-right: 1px solid black;
+    height: 190px;
+    width: 240px;
+}
+
+.div-newfileupload-blockdecide4{
+    height: 190px;
+    width: 240px;
+}

@@ -80,6 +80,7 @@ function ViewingPage(props) {
             showBullets={true}
             showIndex={true}
             onSlide={handleSlide}
+            // lazyLoad={true}
           />
 
           <div className="div-viewingPage-description">

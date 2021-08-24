@@ -8,7 +8,7 @@ config = {
    multipleStatements: true
 }
 
-var connection =mysql.createConnection(config);
+var connection = mysql.createConnection(config);
 connection.connect(function(err){
   if (err){
     console.log('error connecting:' + err.stack);
@@ -17,5 +17,5 @@ connection.connect(function(err){
 });
 
 module.exports ={
-     connection : mysql.createConnection(config) 
-} 
+     connection : connection//mysql.createConnection(config) 
+}

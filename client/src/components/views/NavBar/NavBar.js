@@ -18,10 +18,10 @@ function NavBar(props) {
   };
 
   return (
-    <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
+    <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%',overflowX:"hidden", overflowY:"hidden", }}>
       <div className="menu__logo">
         <a href="/">
-          <div className="menue__logo_logo">
+          <div className="menue__logo_logo" >
             <img src={logo} style={{ width: "140px", height: "140px", padding: "0px" }}></img>
           </div>
         </a>
