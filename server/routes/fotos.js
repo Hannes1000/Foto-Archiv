@@ -37,6 +37,7 @@ router.get("hoi", (req, res)=>{
     return res.json("hoi");
 })
 
+
 router.post("/uploadImage", auth, (req, res) => {
     upload(req, res, err => {
         // console.log(res.req.file.path)
