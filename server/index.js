@@ -53,11 +53,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-
-app.get("/hoi", (req, res) => {
-  res.send("Hello World");
-});
-
 const port = process.env.PORT || 5000
 
 app.listen(port, () => {
