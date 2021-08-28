@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8b0a026b.chunk.css",
+    "main.js": "/static/js/main.2db3e633.chunk.js",
+    "main.js.map": "/static/js/main.2db3e633.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.251da383.chunk.css": "/static/css/2.251da383.chunk.css",
+    "static/js/2.d4709749.chunk.js": "/static/js/2.d4709749.chunk.js",
+    "static/js/2.d4709749.chunk.js.map": "/static/js/2.d4709749.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a776ce476906d2aa50d4dbb25daf9d8f.js": "/precache-manifest.a776ce476906d2aa50d4dbb25daf9d8f.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.251da383.chunk.css.map": "/static/css/2.251da383.chunk.css.map",
+    "static/css/main.8b0a026b.chunk.css.map": "/static/css/main.8b0a026b.chunk.css.map",
+    "static/media/1129342 1.png": "/static/media/1129342 1.b65186d1.png",
+    "static/media/Frame 1.png": "/static/media/Frame 1.307b098b.png",
+    "static/media/Frame 7.svg": "/static/media/Frame 7.3924dc87.svg",
+    "static/media/App.css": "/static/media/background.56cef226.png",
+    "static/media/logo 1.svg": "/static/media/logo 1.fdda182c.svg",
+    "static/media/logo 2.svg": "/static/media/logo 2.92115a2f.svg",
+    "static/media/png-transparent-kraft-paper-kraft-paper-old-paper-nostalgic-background-removebg 1.png": "/static/media/png-transparent-kraft-paper-kraft-paper-old-paper-nostalgic-background-removebg 1.33d6e8b0.png",
+    "static/media/png-transparent-kraft-paper-kraft-paper-old-paper-nostalgic-background-removebg 2.png": "/static/media/png-transparent-kraft-paper-kraft-paper-old-paper-nostalgic-background-removebg 2.faae0f67.png"
+  }
+}
