@@ -453,7 +453,7 @@ function FotoAddingPage(props) {
 
                                 <Form.Item>
                                     <label className="label-fotoAddingPage-titel">Kategorie Zuordnung:</label>
-                                    <ReactTags
+                                    {/* <ReactTags
                                         className="reactTages-fotoaddingPage-tags"
                                         tags={tags}
                                         suggestions={suggestions}
@@ -467,7 +467,7 @@ function FotoAddingPage(props) {
                                         inline={false}
                                         allowDeleteFromEmptyInput={false}
                                         placeholder={"Kategorie auswählen"}
-                                    />
+                                    /> */}
                                     <label className="label-fotoAddingPage-titel">Neue Kategorie Hinzufügen:</label>
                                     <Input
                                         id="tagadd"

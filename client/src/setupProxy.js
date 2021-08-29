@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: 'https://[::1]:5000',
+            target: process.env.NODE_ENV === 'PRODUCTION' ? "https://franz-fotoarchiv.herokuapp.com":'https://[::1]:5000',
             changeOrigin: true,
             "secure": false,
         })

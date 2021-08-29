@@ -39,6 +39,9 @@ app.use('/api/fotos', require('./routes/fotos'));
 
 app.use('/uploads', express.static('uploads'));
 
+//set port
+const port = process.env.PORT || 5000
+
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
 
@@ -47,17 +50,31 @@ if (process.env.NODE_ENV === "production") {
 
   // index.html for all page routes
   app.get("*", (req, res) => {
-    //res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
     //res.sendFile(path.join(__dirname, "index.js"));
-    res.send("<p>Seite nicht vorhanden</p>")
+    //res.send("<p>Seite nicht vorhanden</p>")
   });
+
+  //start server
+  app.listen(port, () => {
+    console.log(`Server Running at ${port}`)
+  });
+} else {
+  //start https server
+  https.createServer({
+    key: fs.readFileSync(path.join(__dirname, 'server.key'), 'utf8'),
+    cert: fs.readFileSync(path.join(__dirname, 'server.cert'), 'utf8')
+  }, app)
+    .listen(port, function () {
+      console.log('App listening on port ' + port + '! Link: https://localhost:' + port)
+    })
+
 }
 
-const port = process.env.PORT || 5000
-
+/*
 app.listen(port, () => {
   console.log(`Server Running at ${port}`)
-});
+});*/
 
 /*
 var httpsServer = https.createServer(credentials, app);
@@ -65,11 +82,5 @@ var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(port, () => {
   console.log(`Server Running at ${port}`)
 });
+*/
 
-https.createServer({
-  key: fs.readFileSync(path.join(__dirname,'server.key'), 'utf8'),
-  cert: fs.readFileSync(path.join(__dirname,'server.cert'), 'utf8')
-}, app)
-.listen(port, function () {
-  console.log('App listening on port '+port+'! Link: https://localhost:'+port)
-})*/
