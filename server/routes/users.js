@@ -89,7 +89,7 @@ router.post("/login", (req, res) => {
         email,
         (err, result) => {
             if (err) {
-                console.log("1")
+                console.log("1" + err)
                 return res.json({
                     loginSuccess: false,
                     message: "Auth failed " + err
