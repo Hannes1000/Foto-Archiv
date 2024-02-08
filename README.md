@@ -8,7 +8,7 @@ I choose to make this project because my great-great-grandfather was one of the 
 So my grandpa needed a place to store all of his images and to remember the stories behind them that he could remember/researched or got told by others.
 
 
-## Functionallity:
+### Functionallity:
 - upload images with a description, the author, copyright a title...
 - manage and search for images
 - view images as a slideshow and with their story displayed
